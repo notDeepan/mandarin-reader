@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mandarin Reader — Learn Mandarin Through Graded Stories</title>
+  <meta name="description" content="Master Mandarin Chinese from A1 to B1+ through 30 beautifully crafted graded stories. Free, open-source, no account needed.">
+  <meta name="keywords" content="Mandarin, Chinese, learn Chinese, graded reader, pinyin, stories, HSK, language learning">
+  <meta name="author" content="Deepan Goswami">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mandarin Reader — Learn Mandarin Through Stories">
+  <meta property="og:description" content="30 graded stories from A1 beginner to B1+ intermediate. Mystery, sci-fi, romance & more — all in pinyin with English translations.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1200&h=630&fit=crop">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#c0392b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #faf7f2;
+      --bg-card: #ffffff;
+      --bg-alt: #f3efe8;
+      --text: #1a1a1a;
+      --text-secondary: #555;
+      --text-muted: #999;
+      --accent: #c0392b;
+      --accent-hover: #e74c3c;
+      --gold: #d4a574;
+      --gold-light: rgba(212,165,116,0.1);
+      --border: #e8e0d8;
+      --pinyin: #1a1a1a;
+      --english: #6a7a8a;
+      --sidebar-bg: #16213e;
+      --sidebar-hover: rgba(255,255,255,0.06);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+      --radius: 16px;
+      --font-pinyin: 1.15rem;
+      --font-english: 0.92rem;
+    }
+
+    body.dark {
+      --bg: #0d0d1a;
+      --bg-card: #1a1a2e;
+      --bg-alt: #111122;
+      --text: #e8e8e8;
+      --text-secondary: #aaa;
+      --text-muted: #666;
+      --border: #2a2a40;
+      --pinyin: #f0f0f0;
+      --english: #8899aa;
+      --sidebar-bg: #0a0a16;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.3);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.4);
+    }
+
+    body.font-small  { --font-pinyin: 1rem;   --font-english: 0.82rem; }
+    body.font-large  { --font-pinyin: 1.35rem; --font-english: 1.05rem; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .hidden { display: none !important; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ==============================
+       NAVIGATION BAR
+       ============================== */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .navbar.scrolled {
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .nav-brand .brand-icon {
+      width: 32px; height: 32px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-link {
+      padding: 8px 16px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-family: inherit;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .nav-link:hover { color: var(--text); background: var(--gold-light); }
+
+    .nav-cta {
+      padding: 8px 20px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: white;
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--accent-hover); }
+
+    .nav-dark-toggle {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+
+    .nav-dark-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ==============================
+       LANDING PAGE
+       ============================== */
+    .landing { animation: fadeIn 0.5s ease; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+    /* --- Hero --- */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(192,57,43,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(212,165,116,0.08) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-bg-chars {
+      position: absolute;
+      font-size: 18rem;
+      font-weight: 800;
+      color: var(--text);
+      opacity: 0.02;
+      user-select: none;
+      pointer-events: none;
+      letter-spacing: 0.2em;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: var(--gold-light);
+      color: var(--gold);
+      border: 1px solid color-mix(in srgb, var(--gold) 20%, transparent);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif', serif;
+      font-size: 4rem;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title .highlight {
+      background: linear-gradient(135deg, var(--accent), #e74c3c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 36px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 14px 32px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      background: var(--accent);
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(192,57,43,0.3); }
+
+    .btn-secondary {
+      padding: 14px 32px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover { border-color: var(--text); }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat .stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .hero-stat .stat-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* --- Features --- */
+    .features-section {
+      padding: 100px 40px;
+      background: var(--bg-alt);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Noto Serif', serif;
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+    .feature-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* --- Books Section --- */
+    .books-section {
+      padding: 100px 40px;
+    }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .book-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s;
+      border: 1px solid var(--border);
+    }
+
+    .book-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+
+    .book-card-cover {
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book-card-cover .cover-char {
+      font-size: 5.5rem;
+      color: rgba(255,255,255,0.12);
+      font-weight: 700;
+      position: absolute;
+      user-select: none;
+    }
+
+    .book-card-cover .cover-title {
+      font-family: 'Noto Serif', serif;
+      font-size: 1.35rem;
+      color: white;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+      padding: 0 20px;
+    }
+
+    .book-card-body { padding: 22px; }
+
+    .book-card-level {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+
+    .book-card-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+
+    .book-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .book-card-chapters { font-size: 0.78rem; color: var(--text-muted); }
+
+    .book-card-btn {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s;
+    }
+
+    .book-card:hover .book-card-btn { gap: 8px; }
+
+    /* Level colors */
+    .level-a1  { --lc: #27ae60; --lg: linear-gradient(135deg, #1e8449, #2ecc71); }
+    .level-a2  { --lc: #2980b9; --lg: linear-gradient(135deg, #1a5276, #3498db); }
+    .level-a2p { --lc: #8e44ad; --lg: linear-gradient(135deg, #6c3483, #af7ac5); }
+    .level-b1  { --lc: #d4781e; --lg: linear-gradient(135deg, #a0600e, #e67e22); }
+    .level-b1p { --lc: #c0392b; --lg: linear-gradient(135deg, #922b21, #e74c3c); }
+
+    .book-card .book-card-cover { background: var(--lg); }
+    .book-card .book-card-level { background: color-mix(in srgb, var(--lc) 12%, transparent); color: var(--lc); }
+
+    /* --- How It Works --- */
+    .how-section {
+      padding: 100px 40px;
+      background: var(--bg-alt);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .step-card {
+      text-align: center;
+      padding: 24px;
+    }
+
+    .step-number {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .step-card h3 { font-size: 1rem; margin-bottom: 8px; }
+    .step-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+
+    /* --- Footer --- */
+    .site-footer {
+      padding: 48px 40px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: 'Noto Serif', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .footer-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ==============================
+       READER VIEW
+       ============================== */
+    .reader-view {
+      display: flex;
+      min-height: 100vh;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .sidebar {
+      position: fixed;
+      left: 0; top: 0; bottom: 0;
+      width: 280px;
+      background: var(--sidebar-bg);
+      color: #ccc;
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar-header {
+      padding: 20px 20px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.78rem;
+      font-family: inherit;
+      cursor: pointer;
+      padding: 4px 0;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+
+    .back-btn:hover { color: #fff; }
+
+    .sidebar-header h2 {
+      font-family: 'Noto Serif', serif;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    .sidebar-level {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 2px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .chapter-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 8px 0;
+    }
+
+    .chapter-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 20px;
+      width: 100%;
+      border: none;
+      background: none;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.84rem;
+      font-family: inherit;
+      cursor: pointer;
+      text-align: left;
+      line-height: 1.4;
+      transition: all 0.2s;
+    }
+
+    .chapter-item:hover { background: var(--sidebar-hover); color: rgba(255,255,255,0.85); }
+    .chapter-item.active { color: var(--gold); background: rgba(212,165,116,0.1); }
+
+    .chapter-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      min-width: 22px; height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.08);
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    .chapter-item.active .chapter-num { background: rgba(212,165,116,0.2); color: var(--gold); }
+    .chapter-info { flex: 1; }
+    .chapter-info .ch-title { display: block; }
+    .chapter-info .ch-sub { display: block; font-size: 0.75rem; opacity: 0.6; margin-top: 2px; font-style: italic; }
+
+    .reader-main {
+      margin-left: 280px;
+      flex: 1;
+      min-height: 100vh;
+      background: var(--bg);
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 50;
+      gap: 12px;
+    }
+
+    .breadcrumbs {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .breadcrumbs a { color: var(--accent); cursor: pointer; }
+    .breadcrumbs .sep { margin: 0 8px; opacity: 0.4; }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .mode-toggle {
+      display: flex;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .mode-btn {
+      padding: 5px 10px;
+      font-size: 0.73rem;
+      font-family: inherit;
+      font-weight: 500;
+      border: none;
+      background: var(--bg-card);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .mode-btn:not(:last-child) { border-right: 1px solid var(--border); }
+    .mode-btn.active { background: var(--accent); color: white; }
+    .mode-btn:hover:not(.active) { color: var(--text); }
+
+    .btn-icon {
+      width: 32px; height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .btn-icon:hover { border-color: var(--accent); color: var(--accent); }
+
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 280px; right: 0;
+      height: 3px;
+      z-index: 60;
+    }
+
+    .scroll-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+      width: 0%;
+      transition: width 0.15s;
+    }
+
+    /* --- Reader Content --- */
+    .reader-container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 40px 36px 100px;
+    }
+
+    .story-header {
+      text-align: center;
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .story-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .story-title {
+      font-family: 'Noto Serif', serif;
+      font-size: 2rem;
+      margin-bottom: 4px;
+    }
+
+    .story-subtitle {
+      font-family: 'Noto Serif', serif;
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    .story-meta {
+      margin-top: 16px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .story-meta span { display: flex; align-items: center; gap: 5px; }
+    .story-body { line-height: 1; }
+    .paragraph { margin-bottom: 32px; }
+
+    .sentence-pair {
+      margin-bottom: 6px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      transition: background 0.2s;
+      cursor: default;
+    }
+
+    .sentence-pair:hover { background: var(--gold-light); }
+
+    .pinyin-line {
+      font-family: 'Noto Serif', serif;
+      font-size: var(--font-pinyin);
+      color: var(--pinyin);
+      line-height: 1.75;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+
+    .english-line {
+      font-size: var(--font-english);
+      color: var(--english);
+      line-height: 1.5;
+      font-style: italic;
+      transition: filter 0.3s, opacity 0.3s;
+    }
+
+    .story-body.mode-pinyin .english-line { display: none; }
+    .story-body.mode-english .pinyin-line { display: none; }
+    .story-body.mode-reveal .english-line {
+      filter: blur(6px);
+      opacity: 0.5;
+      cursor: pointer;
+      user-select: none;
+    }
+    .story-body.mode-reveal .sentence-pair.revealed .english-line {
+      filter: none;
+      opacity: 1;
+      cursor: default;
+      user-select: auto;
+    }
+
+    .section-divider {
+      text-align: center;
+      margin: 36px 0;
+      color: var(--gold);
+      font-size: 0.9rem;
+      letter-spacing: 0.5em;
+      opacity: 0.5;
+    }
+
+    .nav-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .nav-btn {
+      padding: 10px 24px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-family: inherit;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-btn.prev { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-secondary); }
+    .nav-btn.prev:hover { border-color: var(--text); color: var(--text); }
+    .nav-btn.next { background: var(--accent); border: 1px solid var(--accent); color: white; }
+    .nav-btn.next:hover { background: var(--accent-hover); }
+    .nav-btn:disabled { opacity: 0.35; pointer-events: none; }
+
+    /* --- Vocab Panel --- */
+    .vocab-panel {
+      position: fixed;
+      right: -380px;
+      top: 0; bottom: 0;
+      width: 380px;
+      background: var(--bg-card);
+      box-shadow: -4px 0 24px rgba(0,0,0,0.1);
+      z-index: 200;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid var(--border);
+    }
+
+    .vocab-panel.open { right: 0; }
+
+    .vocab-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .vocab-header h3 { font-family: 'Noto Serif', serif; font-size: 1rem; }
+
+    .vocab-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      width: 32px; height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+
+    .vocab-close:hover { background: var(--gold-light); }
+
+    .vocab-body { flex: 1; overflow-y: auto; padding: 8px 24px; }
+
+    .vocab-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 11px 0;
+      border-bottom: 1px solid color-mix(in srgb, var(--border) 50%, transparent);
+      gap: 16px;
+    }
+
+    .vocab-pinyin { font-weight: 600; font-size: 0.93rem; white-space: nowrap; }
+    .vocab-english { color: var(--text-secondary); font-size: 0.84rem; text-align: right; }
+
+    /* --- Mobile --- */
+    .sidebar-toggle {
+      display: none;
+      position: fixed;
+      top: 10px; left: 12px;
+      z-index: 150;
+      width: 38px; height: 38px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      cursor: pointer;
+      font-size: 1.1rem;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-sm);
+      color: var(--text);
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 90;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .overlay.show { display: block; opacity: 1; }
+
+    @media (max-width: 900px) {
+      .sidebar { transform: translateX(-100%); }
+      .sidebar.open { transform: translateX(0); }
+      .sidebar-toggle { display: flex; }
+      .reader-main { margin-left: 0; }
+      .topbar { padding-left: 56px; }
+      .scroll-progress { left: 0; }
+      .reader-container { padding: 32px 20px 80px; }
+      .story-title { font-size: 1.5rem; }
+      .hero-title { font-size: 2.5rem; }
+      .hero-bg-chars { font-size: 8rem; }
+      .hero-stats { gap: 24px; flex-wrap: wrap; }
+      .navbar { padding: 0 20px; }
+      .nav-link { display: none; }
+      .features-section, .books-section, .how-section { padding: 60px 20px; }
+      .section-title { font-size: 1.7rem; }
+    }
+
+    @media (max-width: 500px) {
+      .mode-toggle { display: none; }
+      .books-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 2rem; }
+      .hero-desc { font-size: 1rem; }
+      .hero-stats { gap: 16px; }
+      .hero-stat .stat-num { font-size: 1.4rem; }
+      .features-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand" onclick="goHome()">
+      <div class="brand-icon">MR</div>
+      <span>Mandarin Reader</span>
+    </div>
+    <div class="nav-links">
+      <button class="nav-link" onclick="scrollToSection('features')">Features</button>
+      <button class="nav-link" onclick="scrollToSection('books')">Books</button>
+      <button class="nav-link" onclick="scrollToSection('howto')">How It Works</button>
+      <button class="nav-dark-toggle" onclick="toggleDark()" id="darkBtnNav" title="Toggle dark mode">&#9789;</button>
+      <button class="nav-cta" onclick="scrollToSection('books')">Start Reading</button>
+    </div>
+  </nav>
+
+  <!-- ===== LANDING PAGE ===== -->
+  <div class="landing" id="landingView">
+
+    <!-- Hero -->
+    <section class="hero-section">
+      <div class="hero-bg-chars">读书学习</div>
+      <div class="hero-content">
+        <div class="hero-badge">&#10024; 100% Free &middot; No Account Needed</div>
+        <h1 class="hero-title">
+          Learn Mandarin<br>Through <span class="highlight">Stories</span>
+        </h1>
+        <p class="hero-desc">
+          Master Mandarin Chinese from absolute beginner to intermediate through 30 beautifully crafted graded stories — mystery, sci-fi, romance, and more.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="scrollToSection('books')">
+            Start Reading Free &#8594;
+          </button>
+          <button class="btn-secondary" onclick="scrollToSection('howto')">
+            How It Works
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="stat-num">30</div>
+            <div class="stat-label">Stories</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-num">5</div>
+            <div class="stat-label">Levels</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-num">A1–B1+</div>
+            <div class="stat-label">Range</div>
+          </div>
+          <div class="hero-stat">
+            <div class="stat-num">1000+</div>
+            <div class="stat-label">Vocab Words</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section" id="features">
+      <div class="section-header">
+        <div class="section-tag">Features</div>
+        <h2 class="section-title">Built for Real Learning</h2>
+        <p class="section-desc">Every feature is designed to help you learn naturally, at your own pace.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon" style="background: rgba(39,174,96,0.1); color: #27ae60;">&#127891;</div>
+          <h3>Graded Difficulty</h3>
+          <p>Stories progress from simple A1 greetings to complex B1+ narratives. Each book matches your level perfectly.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: rgba(41,128,185,0.1); color: #2980b9;">&#128064;</div>
+          <h3>4 Reading Modes</h3>
+          <p>Read with both pinyin and English, pinyin-only for challenge, English-only for review, or reveal mode to test yourself.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: rgba(142,68,173,0.1); color: #8e44ad;">&#128218;</div>
+          <h3>Vocabulary Panels</h3>
+          <p>Every chapter includes a curated vocabulary list. Key words and their meanings are always one click away.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: rgba(230,126,34,0.1); color: #e67e22;">&#127775;</div>
+          <h3>Real Stories</h3>
+          <p>Not boring textbook sentences. At B1+ you'll read murder mysteries, sci-fi adventures, and touching dramas.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: rgba(192,57,43,0.1); color: #c0392b;">&#127763;</div>
+          <h3>Dark Mode</h3>
+          <p>Easy on the eyes for late-night study sessions. Your preference is saved automatically.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" style="background: rgba(212,165,116,0.1); color: #d4a574;">&#128241;</div>
+          <h3>Works Everywhere</h3>
+          <p>Fully responsive design. Read on your phone, tablet, or desktop. No app download needed.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Books -->
+    <section class="books-section" id="books">
+      <div class="section-header">
+        <div class="section-tag">Library</div>
+        <h2 class="section-title">Choose Your Level</h2>
+        <p class="section-desc">Five books, thirty stories. Start wherever you are.</p>
+      </div>
+      <div class="books-grid" id="booksGrid"></div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-section" id="howto">
+      <div class="section-header">
+        <div class="section-tag">Getting Started</div>
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-desc">Start reading in seconds. No signup, no downloads.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Pick Your Level</h3>
+          <p>Choose from A1 (beginner) to B1+ (upper intermediate). Not sure? Start with Book 1.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Read the Story</h3>
+          <p>Each sentence shows pinyin with an English translation. Hover to highlight, click to reveal in test mode.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Learn the Vocab</h3>
+          <p>Open the vocabulary panel to review key words from each chapter. Build your word bank naturally.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3>Level Up</h3>
+          <p>Move to the next chapter or book when you're ready. The difficulty grows with you.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-brand">Mandarin Reader</div>
+      <p class="footer-desc">An open-source project for learning Mandarin Chinese through the joy of reading.</p>
+      <div class="footer-links">
+        <a href="https://github.com/gdeepan/mandarin-reader" target="_blank">GitHub</a>
+        <a href="#books" onclick="event.preventDefault(); scrollToSection('books')">Start Reading</a>
+      </div>
+      <div class="footer-copy">&copy; 2025 Mandarin Reader. Made with &#10084;&#65039; for language learners.</div>
+    </footer>
+  </div>
+
+  <!-- ===== READER VIEW ===== -->
+  <div class="reader-view hidden" id="readerView">
+    <button class="sidebar-toggle" onclick="toggleSidebar()">&#9776;</button>
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+    <div class="scroll-progress"><div class="scroll-progress-bar" id="progressBar"></div></div>
+
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <button class="back-btn" onclick="goHome()">&#8592; Library</button>
+        <h2 id="sidebarTitle"></h2>
+        <div class="sidebar-level" id="sidebarLevel"></div>
+      </div>
+      <div class="chapter-list" id="chapterList"></div>
+    </nav>
+
+    <main class="reader-main">
+      <div class="topbar">
+        <div class="breadcrumbs" id="breadcrumbs"></div>
+        <div class="topbar-actions">
+          <div class="mode-toggle" id="modeToggle"></div>
+          <button class="btn-icon" onclick="adjustFont(-1)" title="Smaller text" style="font-size:0.75rem;font-weight:700;">A&#8315;</button>
+          <button class="btn-icon" onclick="adjustFont(1)" title="Larger text" style="font-size:0.9rem;font-weight:700;">A&#8314;</button>
+          <button class="btn-icon" onclick="toggleDark()" title="Dark mode" id="darkBtnReader">&#9789;</button>
+          <button class="btn-icon" onclick="toggleVocab()" title="Vocabulary">&#128218;</button>
+        </div>
+      </div>
+      <div class="reader-container">
+        <div id="storyContent"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ===== VOCAB PANEL ===== -->
+  <div class="vocab-panel" id="vocabPanel">
+    <div class="vocab-header">
+      <h3>Key Vocabulary</h3>
+      <button class="vocab-close" onclick="toggleVocab()">&times;</button>
+    </div>
+    <div class="vocab-body" id="vocabBody"></div>
+  </div>
+
+  <!-- Book data -->
+  <script src="data/book1.js"></script>
+  <script src="data/book2.js"></script>
+  <script src="data/book3.js"></script>
+  <script src="data/book4.js"></script>
+  <script src="data/book5.js"></script>
+
+  <script>
+    /* ===== STATE ===== */
+    let state = {
+      view: 'home',
+      bookIdx: 0,
+      chapIdx: 0,
+      mode: 'both',
+      fontLevel: 0
+    };
+
+    const BOOKS = window.BOOKS || [];
+    const MODES = ['both', 'pinyin', 'english', 'reveal'];
+    const MODE_LABELS = { both: 'Both', pinyin: 'Pinyin', english: 'English', reveal: 'Reveal' };
+    const LEVEL_CLASSES = { 'A1': 'level-a1', 'A2': 'level-a2', 'A2+': 'level-a2p', 'B1': 'level-b1', 'B1+': 'level-b1p' };
+
+    /* ===== LANDING ===== */
+    function renderHome() {
+      const grid = document.getElementById('booksGrid');
+      grid.innerHTML = BOOKS.map((book, bi) => `
+        <div class="book-card ${LEVEL_CLASSES[book.level] || 'level-a1'}" onclick="openBook(${bi})">
+          <div class="book-card-cover">
+            <span class="cover-char">${book.icon || ''}</span>
+            <span class="cover-title">${book.title}</span>
+          </div>
+          <div class="book-card-body">
+            <span class="book-card-level">Level ${book.level}</span>
+            <p class="book-card-desc">${book.description || ''}</p>
+            <div class="book-card-footer">
+              <span class="book-card-chapters">${book.chapters.length} chapters</span>
+              <button class="book-card-btn">Start reading &#8594;</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function scrollToSection(id) {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function openBook(bi, ci) {
+      ci = ci || 0;
+      state.bookIdx = bi;
+      state.chapIdx = ci;
+      state.view = 'reader';
+      document.getElementById('landingView').classList.add('hidden');
+      document.getElementById('navbar').classList.add('hidden');
+      document.getElementById('readerView').classList.remove('hidden');
+      renderReader();
+    }
+
+    function goHome() {
+      state.view = 'home';
+      document.getElementById('readerView').classList.add('hidden');
+      document.getElementById('vocabPanel').classList.remove('open');
+      document.getElementById('landingView').classList.remove('hidden');
+      document.getElementById('navbar').classList.remove('hidden');
+      window.scrollTo(0, 0);
+    }
+
+    /* ===== READER ===== */
+    function renderReader() {
+      const book = BOOKS[state.bookIdx];
+      if (!book) return;
+      const chapter = book.chapters[state.chapIdx];
+      if (!chapter) return;
+
+      document.getElementById('sidebarTitle').textContent = book.title;
+      document.getElementById('sidebarLevel').textContent = 'Level ' + book.level;
+
+      document.getElementById('breadcrumbs').innerHTML =
+        `<a onclick="goHome()">Library</a><span class="sep">/</span>` +
+        `<span>${book.title}</span><span class="sep">/</span>` +
+        `<span>Ch. ${state.chapIdx + 1}</span>`;
+
+      renderChapterList();
+      renderModeToggle();
+      renderStory();
+      renderVocab();
+      window.scrollTo(0, 0);
+    }
+
+    function renderChapterList() {
+      const book = BOOKS[state.bookIdx];
+      document.getElementById('chapterList').innerHTML = book.chapters.map((ch, ci) => `
+        <button class="chapter-item ${ci === state.chapIdx ? 'active' : ''}" onclick="loadChapter(${ci})">
+          <span class="chapter-num">${ci + 1}</span>
+          <span class="chapter-info">
+            <span class="ch-title">${ch.title}</span>
+            <span class="ch-sub">${ch.subtitle}</span>
+          </span>
+        </button>
+      `).join('');
+    }
+
+    function renderModeToggle() {
+      document.getElementById('modeToggle').innerHTML = MODES.map(m =>
+        `<button class="mode-btn ${state.mode === m ? 'active' : ''}" onclick="setMode('${m}')">${MODE_LABELS[m]}</button>`
+      ).join('');
+    }
+
+    function renderStory() {
+      const book = BOOKS[state.bookIdx];
+      const ch = book.chapters[state.chapIdx];
+      const modeClass = state.mode !== 'both' ? 'mode-' + state.mode : '';
+
+      const hasPrev = state.chapIdx > 0 || state.bookIdx > 0;
+      const hasNext = state.chapIdx < book.chapters.length - 1 || state.bookIdx < BOOKS.length - 1;
+
+      document.getElementById('storyContent').innerHTML = `
+        <div class="story-header">
+          <div class="story-label">${book.title} &middot; Level ${book.level}</div>
+          <h2 class="story-title">${ch.title}</h2>
+          <p class="story-subtitle">${ch.subtitle}</p>
+          <div class="story-meta">
+            <span>&#128337; ${ch.readTime || ''}</span>
+            <span>&#128221; ${ch.wordCount || ''}</span>
+            <span>&#127793; Level ${book.level}</span>
+          </div>
+        </div>
+        <div class="story-body ${modeClass}" id="storyBody">
+          ${ch.paragraphs.map((para, pi) => `
+            <div class="paragraph">
+              ${para.map(([p, e]) => `
+                <div class="sentence-pair" onclick="revealSentence(this)">
+                  <div class="pinyin-line">${p}</div>
+                  <div class="english-line">${e}</div>
+                </div>
+              `).join('')}
+            </div>
+            ${pi < ch.paragraphs.length - 1 ? '<div class="section-divider">&#9671; &#9671; &#9671;</div>' : ''}
+          `).join('')}
+        </div>
+        <div class="nav-footer">
+          <button class="nav-btn prev" onclick="navChapter(-1)" ${hasPrev ? '' : 'disabled'}>&#8592; Previous</button>
+          <button class="nav-btn next" onclick="navChapter(1)" ${hasNext ? '' : 'disabled'}>Next &#8594;</button>
+        </div>
+      `;
+    }
+
+    function renderVocab() {
+      const ch = BOOKS[state.bookIdx].chapters[state.chapIdx];
+      document.getElementById('vocabBody').innerHTML = (ch.vocab || []).map(([p, e]) => `
+        <div class="vocab-item">
+          <span class="vocab-pinyin">${p}</span>
+          <span class="vocab-english">${e}</span>
+        </div>
+      `).join('');
+    }
+
+    /* ===== ACTIONS ===== */
+    function loadChapter(ci) {
+      state.chapIdx = ci;
+      renderReader();
+      if (window.innerWidth <= 900) closeSidebar();
+    }
+
+    function navChapter(dir) {
+      const book = BOOKS[state.bookIdx];
+      let newChap = state.chapIdx + dir;
+      if (newChap >= 0 && newChap < book.chapters.length) {
+        loadChapter(newChap);
+      } else if (dir > 0 && state.bookIdx < BOOKS.length - 1) {
+        openBook(state.bookIdx + 1, 0);
+      } else if (dir < 0 && state.bookIdx > 0) {
+        const prevBook = BOOKS[state.bookIdx - 1];
+        openBook(state.bookIdx - 1, prevBook.chapters.length - 1);
+      }
+    }
+
+    function setMode(m) {
+      state.mode = m;
+      renderModeToggle();
+      const body = document.getElementById('storyBody');
+      if (body) {
+        body.className = 'story-body';
+        if (m !== 'both') body.classList.add('mode-' + m);
+      }
+      document.querySelectorAll('.sentence-pair').forEach(el => el.classList.remove('revealed'));
+    }
+
+    function revealSentence(el) {
+      if (state.mode === 'reveal') el.classList.toggle('revealed');
+    }
+
+    function adjustFont(dir) {
+      state.fontLevel = Math.max(-1, Math.min(1, state.fontLevel + dir));
+      document.body.classList.remove('font-small', 'font-large');
+      if (state.fontLevel === -1) document.body.classList.add('font-small');
+      if (state.fontLevel === 1) document.body.classList.add('font-large');
+    }
+
+    function toggleDark() {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      localStorage.setItem('mandarin-reader-dark', isDark);
+      const icon = isDark ? '&#9788;' : '&#9789;';
+      document.querySelectorAll('#darkBtnNav, #darkBtnReader').forEach(el => el.innerHTML = icon);
+    }
+
+    function toggleVocab() { document.getElementById('vocabPanel').classList.toggle('open'); }
+
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+      document.getElementById('overlay').classList.toggle('show');
+    }
+
+    function closeSidebar() {
+      document.getElementById('sidebar').classList.remove('open');
+      document.getElementById('overlay').classList.remove('show');
+    }
+
+    /* ===== NAVBAR SCROLL ===== */
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (nav) nav.classList.toggle('scrolled', window.scrollY > 20);
+
+      if (state.view === 'reader') {
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = h > 0 ? (window.scrollY / h) * 100 : 0;
+        document.getElementById('progressBar').style.width = pct + '%';
+      }
+    });
+
+    /* ===== INIT ===== */
+    if (localStorage.getItem('mandarin-reader-dark') === 'true') {
+      document.body.classList.add('dark');
+      document.querySelectorAll('#darkBtnNav, #darkBtnReader').forEach(el => el.innerHTML = '&#9788;');
+    }
+    renderHome();
+
+    /* ===== SERVICE WORKER ===== */
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>
