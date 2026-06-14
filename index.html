@@ -973,6 +973,274 @@
     .vocab-pinyin { font-weight: 600; font-size: 0.93rem; white-space: nowrap; }
     .vocab-english { color: var(--text-secondary); font-size: 0.84rem; text-align: right; }
 
+    /* ==============================
+       GRAMMAR SECTION (LANDING)
+       ============================== */
+    .grammar-section { padding: 100px 40px; background: var(--bg-alt); }
+
+    .grammar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .grammar-level-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .grammar-level-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+    .grammar-level-icon {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: white;
+      margin: 0 auto 14px;
+      font-weight: 700;
+    }
+
+    .grammar-level-card h3 { font-size: 1rem; margin-bottom: 4px; }
+
+    .grammar-level-card .glc-level {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+
+    .grammar-level-card p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .grammar-level-card .glc-count {
+      margin-top: 12px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* ==============================
+       GRAMMAR VIEW
+       ============================== */
+    .grammar-view {
+      min-height: 100vh;
+      background: var(--bg);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .grammar-topbar {
+      position: sticky;
+      top: 0; z-index: 50;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 40px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .grammar-back {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-family: inherit;
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .grammar-back:hover { color: var(--text); background: var(--gold-light); }
+
+    .grammar-tabs {
+      display: flex;
+      gap: 4px;
+      flex: 1;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .grammar-tab {
+      padding: 6px 18px;
+      font-size: 0.82rem;
+      font-family: inherit;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-muted);
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+
+    .grammar-tab:hover { color: var(--text); border-color: var(--text); }
+    .grammar-tab.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+    .grammar-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 36px 100px;
+    }
+
+    .grammar-level-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .grammar-level-header h2 {
+      font-family: 'Noto Serif', serif;
+      font-size: 1.8rem;
+      margin-bottom: 4px;
+    }
+
+    .grammar-level-header .glh-sub {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .grammar-level-header .glh-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .pattern-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 24px;
+      transition: box-shadow 0.2s;
+    }
+
+    .pattern-card:hover { box-shadow: var(--shadow-md); }
+
+    .pattern-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .pattern-num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+      padding: 3px 10px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .pattern-name { font-size: 1.1rem; font-weight: 700; }
+
+    .pattern-name-zh {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .formula-display {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 16px 0;
+      padding: 16px 20px;
+      background: var(--bg-alt);
+      border-radius: 12px;
+    }
+
+    .formula-part {
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: white;
+      white-space: nowrap;
+    }
+
+    .formula-plus {
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    .pattern-tip {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 16px 0;
+      padding-left: 14px;
+      border-left: 3px solid var(--gold);
+    }
+
+    .examples-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin: 20px 0 12px;
+    }
+
+    .example-item {
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin-bottom: 8px;
+      background: var(--bg-alt);
+      transition: background 0.2s;
+    }
+
+    .example-item:hover { background: var(--gold-light); }
+
+    .example-parts {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .part-group { text-align: center; }
+
+    .part-pinyin {
+      font-family: 'Noto Serif', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      display: block;
+    }
+
+    .part-english {
+      font-size: 0.73rem;
+      font-style: italic;
+      display: block;
+      opacity: 0.8;
+      margin-top: 1px;
+    }
+
     /* --- Mobile --- */
     .sidebar-toggle {
       display: none;
@@ -1017,7 +1285,11 @@
       .hero-stats { gap: 24px; flex-wrap: wrap; }
       .navbar { padding: 0 20px; }
       .nav-link { display: none; }
-      .features-section, .books-section, .how-section { padding: 60px 20px; }
+      .features-section, .books-section, .how-section, .grammar-section { padding: 60px 20px; }
+      .grammar-topbar { padding: 12px 16px; }
+      .grammar-content { padding: 32px 20px 80px; }
+      .pattern-card { padding: 20px; }
+      .grammar-level-header h2 { font-size: 1.5rem; }
       .section-title { font-size: 1.7rem; }
     }
 
@@ -1043,6 +1315,7 @@
     <div class="nav-links">
       <button class="nav-link" onclick="scrollToSection('features')">Features</button>
       <button class="nav-link" onclick="scrollToSection('books')">Books</button>
+      <button class="nav-link" onclick="scrollToSection('grammar')">Grammar</button>
       <button class="nav-link" onclick="scrollToSection('howto')">How It Works</button>
       <button class="nav-dark-toggle" onclick="toggleDark()" id="darkBtnNav" title="Toggle dark mode">&#9789;</button>
       <button class="nav-cta" onclick="scrollToSection('books')">Start Reading</button>
@@ -1143,6 +1416,16 @@
       <div class="books-grid" id="booksGrid"></div>
     </section>
 
+    <!-- Grammar Patterns -->
+    <section class="grammar-section" id="grammar">
+      <div class="section-header">
+        <div class="section-tag">Grammar</div>
+        <h2 class="section-title">Sentence Patterns</h2>
+        <p class="section-desc">Learn how Chinese sentences are built — from basic SVO to advanced literary patterns.</p>
+      </div>
+      <div class="grammar-grid" id="grammarGrid"></div>
+    </section>
+
     <!-- How It Works -->
     <section class="how-section" id="howto">
       <div class="section-header">
@@ -1218,6 +1501,16 @@
     </main>
   </div>
 
+  <!-- ===== GRAMMAR VIEW ===== -->
+  <div class="grammar-view hidden" id="grammarView">
+    <div class="grammar-topbar">
+      <button class="grammar-back" onclick="goHome()">&#8592; Library</button>
+      <div class="grammar-tabs" id="grammarTabs"></div>
+      <button class="btn-icon" onclick="toggleDark()" title="Dark mode" id="darkBtnGrammar">&#9789;</button>
+    </div>
+    <div class="grammar-content" id="grammarContent"></div>
+  </div>
+
   <!-- ===== VOCAB PANEL ===== -->
   <div class="vocab-panel" id="vocabPanel">
     <div class="vocab-header">
@@ -1233,6 +1526,7 @@
   <script src="data/book3.js"></script>
   <script src="data/book4.js"></script>
   <script src="data/book5.js"></script>
+  <script src="data/grammar.js"></script>
 
   <script>
     /* ===== STATE ===== */
@@ -1241,10 +1535,14 @@
       bookIdx: 0,
       chapIdx: 0,
       mode: 'both',
-      fontLevel: 0
+      fontLevel: 0,
+      grammarLevel: 0
     };
 
     const BOOKS = window.BOOKS || [];
+    const GRAMMAR = window.GRAMMAR || [];
+    const LEVEL_COLORS = { 'A1':'#27ae60','A2':'#2980b9','A2+':'#8e44ad','B1':'#d4781e','B1+':'#c0392b' };
+    const LEVEL_GRADIENTS = { 'A1':'linear-gradient(135deg,#1e8449,#2ecc71)','A2':'linear-gradient(135deg,#1a5276,#3498db)','A2+':'linear-gradient(135deg,#6c3483,#af7ac5)','B1':'linear-gradient(135deg,#a0600e,#e67e22)','B1+':'linear-gradient(135deg,#922b21,#e74c3c)' };
     const MODES = ['both', 'pinyin', 'english', 'reveal'];
     const MODE_LABELS = { both: 'Both', pinyin: 'Pinyin', english: 'English', reveal: 'Reveal' };
     const LEVEL_CLASSES = { 'A1': 'level-a1', 'A2': 'level-a2', 'A2+': 'level-a2p', 'B1': 'level-b1', 'B1+': 'level-b1p' };
@@ -1268,6 +1566,7 @@
           </div>
         </div>
       `).join('');
+      renderGrammarSection();
     }
 
     function scrollToSection(id) {
@@ -1288,6 +1587,7 @@
     function goHome() {
       state.view = 'home';
       document.getElementById('readerView').classList.add('hidden');
+      document.getElementById('grammarView').classList.add('hidden');
       document.getElementById('vocabPanel').classList.remove('open');
       document.getElementById('landingView').classList.remove('hidden');
       document.getElementById('navbar').classList.remove('hidden');
@@ -1431,7 +1731,7 @@
       const isDark = document.body.classList.contains('dark');
       localStorage.setItem('mandarin-reader-dark', isDark);
       const icon = isDark ? '&#9788;' : '&#9789;';
-      document.querySelectorAll('#darkBtnNav, #darkBtnReader').forEach(el => el.innerHTML = icon);
+      document.querySelectorAll('#darkBtnNav, #darkBtnReader, #darkBtnGrammar').forEach(el => el.innerHTML = icon);
     }
 
     function toggleVocab() { document.getElementById('vocabPanel').classList.toggle('open'); }
@@ -1444,6 +1744,89 @@
     function closeSidebar() {
       document.getElementById('sidebar').classList.remove('open');
       document.getElementById('overlay').classList.remove('show');
+    }
+
+    /* ===== GRAMMAR ===== */
+    function renderGrammarSection() {
+      var grid = document.getElementById('grammarGrid');
+      if (!grid) return;
+      grid.innerHTML = GRAMMAR.map(function(lvl, li) {
+        return '<div class="grammar-level-card" onclick="openGrammar(' + li + ')">' +
+          '<div class="grammar-level-icon" style="background:' + LEVEL_GRADIENTS[lvl.level] + '">' + lvl.icon + '</div>' +
+          '<div class="glc-level" style="color:' + LEVEL_COLORS[lvl.level] + '">Level ' + lvl.level + '</div>' +
+          '<h3>' + lvl.title + '</h3>' +
+          '<p>' + lvl.subtitle + '</p>' +
+          '<div class="glc-count">' + lvl.patterns.length + ' patterns</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    function openGrammar(li) {
+      state.view = 'grammar';
+      state.grammarLevel = li;
+      document.getElementById('landingView').classList.add('hidden');
+      document.getElementById('navbar').classList.add('hidden');
+      document.getElementById('grammarView').classList.remove('hidden');
+      renderGrammar();
+    }
+
+    function renderExampleParts(parts, formula) {
+      return parts.map(function(p) {
+        var color = p[2] === -1 ? 'var(--text)' : (formula[p[2]] ? formula[p[2]][1] : 'var(--text)');
+        var cls = p[2] === -1 ? ' part-neutral' : '';
+        return '<div class="part-group' + cls + '">' +
+          '<span class="part-pinyin" style="color:' + color + '">' + p[0] + '</span>' +
+          (p[1] !== '-' ? '<span class="part-english">' + p[1] + '</span>' : '') +
+        '</div>';
+      }).join('');
+    }
+
+    function renderGrammar() {
+      var lvl = GRAMMAR[state.grammarLevel];
+      if (!lvl) return;
+
+      document.getElementById('grammarTabs').innerHTML = GRAMMAR.map(function(g, gi) {
+        return '<button class="grammar-tab' + (gi === state.grammarLevel ? ' active' : '') + '" onclick="switchGrammarLevel(' + gi + ')">' + g.level + '</button>';
+      }).join('');
+
+      var html = '<div class="grammar-level-header">' +
+        '<h2>' + lvl.title + '</h2>' +
+        '<div class="glh-sub">' + lvl.subtitle + ' — Level ' + lvl.level + '</div>' +
+        '<div class="glh-desc">' + lvl.description + '</div>' +
+      '</div>';
+
+      lvl.patterns.forEach(function(pat, pi) {
+        var formulaHtml = pat.formula.map(function(f, fi) {
+          return (fi > 0 ? '<span class="formula-plus">+</span>' : '') +
+            '<span class="formula-part" style="background:' + f[1] + '">' + f[0] + '</span>';
+        }).join('');
+
+        var examplesHtml = pat.examples.map(function(ex) {
+          return '<div class="example-item"><div class="example-parts">' +
+            renderExampleParts(ex.parts, pat.formula) +
+          '</div></div>';
+        }).join('');
+
+        html += '<div class="pattern-card">' +
+          '<div class="pattern-header">' +
+            '<span class="pattern-num">' + (pi + 1) + '</span>' +
+            '<span class="pattern-name">' + pat.name + '</span>' +
+          '</div>' +
+          '<div class="pattern-name-zh">' + pat.nameZh + '</div>' +
+          '<div class="formula-display">' + formulaHtml + '</div>' +
+          '<div class="pattern-tip">' + pat.tip + '</div>' +
+          '<div class="examples-label">Examples</div>' +
+          examplesHtml +
+        '</div>';
+      });
+
+      document.getElementById('grammarContent').innerHTML = html;
+      window.scrollTo(0, 0);
+    }
+
+    function switchGrammarLevel(gi) {
+      state.grammarLevel = gi;
+      renderGrammar();
     }
 
     /* ===== NAVBAR SCROLL ===== */
