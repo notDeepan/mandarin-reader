@@ -856,6 +856,33 @@
       margin-bottom: 3px;
     }
 
+    .gloss-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+      margin-bottom: 4px;
+    }
+    .gloss-word {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .gw-meaning {
+      font-size: 0.62rem;
+      color: var(--english);
+      opacity: 0.7;
+      font-style: italic;
+      line-height: 1.2;
+      margin-bottom: 1px;
+    }
+    .gw-pinyin {
+      font-family: 'Noto Serif', serif;
+      font-size: var(--font-pinyin);
+      color: var(--pinyin);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
     .english-line {
       font-size: var(--font-english);
       color: var(--english);
@@ -865,7 +892,7 @@
     }
 
     .story-body.mode-pinyin .english-line { display: none; }
-    .story-body.mode-english .pinyin-line { display: none; }
+    .story-body.mode-english .pinyin-line, .story-body.mode-english .gloss-line { display: none; }
     .story-body.mode-reveal .english-line {
       filter: blur(6px);
       opacity: 0.5;
@@ -1527,6 +1554,7 @@
   <script src="data/book4.js"></script>
   <script src="data/book5.js"></script>
   <script src="data/grammar.js"></script>
+  <script src="data/glossary.js"></script>
 
   <script>
     /* ===== STATE ===== */
@@ -1635,6 +1663,28 @@
       ).join('');
     }
 
+    function glossSentence(pinyin, level) {
+      var glossLevels = ['A1', 'A2', 'A2+'];
+      if (glossLevels.indexOf(level) === -1 || !window.GLOSSARY) {
+        return '<div class="pinyin-line">' + pinyin + '</div>';
+      }
+      var words = pinyin.split(/\s+/);
+      var parts = words.map(function(w) {
+        var clean = w.replace(/[.,!?;:，。！？、；：""''…—·]+$/g, '').replace(/^[""''«»]+/, '');
+        var trailing = w.slice(clean.length);
+        var lookup = GLOSSARY[clean] || GLOSSARY[clean.toLowerCase()] || '';
+        if (!lookup) {
+          var noPunct = clean.replace(/[.,!?;:，。！？、；：""''…—·]+/g, '');
+          lookup = GLOSSARY[noPunct] || GLOSSARY[noPunct.toLowerCase()] || '';
+        }
+        return '<span class="gloss-word">' +
+          '<span class="gw-meaning">' + (lookup || ' ') + '</span>' +
+          '<span class="gw-pinyin">' + w + '</span>' +
+          '</span>';
+      });
+      return '<div class="gloss-line">' + parts.join('') + '</div>';
+    }
+
     function renderStory() {
       const book = BOOKS[state.bookIdx];
       const ch = book.chapters[state.chapIdx];
@@ -1659,7 +1709,7 @@
             <div class="paragraph">
               ${para.map(([p, e]) => `
                 <div class="sentence-pair" onclick="revealSentence(this)">
-                  <div class="pinyin-line">${p}</div>
+                  ${glossSentence(p, book.level)}
                   <div class="english-line">${e}</div>
                 </div>
               `).join('')}
