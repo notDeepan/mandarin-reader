@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mandarin-reader-v4';
+const CACHE_NAME = 'mandarin-reader-v5';
 const ASSETS = [
   '/',
   '/index.html',
