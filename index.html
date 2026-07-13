@@ -1755,16 +1755,13 @@
       var grid = document.getElementById('novelGrid');
       if (!grid) return;
       grid.innerHTML = NOVELS.map(function(novel, ni) {
-        var levels = (novel.chapters || []).map(function(ch) { return ch.level; }).filter(Boolean);
-        var range = levels.length ? (levels[0] === levels[levels.length - 1] ? levels[0] : levels[0] + ' &#8594; ' + levels[levels.length - 1]) : '';
         return '<div class="novel-card" onclick="openNovel(' + ni + ')">' +
           '<span class="novel-icon">' + (novel.icon || '') + '</span>' +
           '<div class="novel-title">' + novel.title + '</div>' +
           '<div class="novel-titleZh">' + (novel.titleZh || '') + '</div>' +
           '<p class="novel-desc">' + (novel.description || '') + '</p>' +
           '<div class="novel-meta">' +
-            '<span>' + novel.chapters.length + ' chapters</span>' +
-            (range ? '<span>' + range + '</span>' : '') +
+            '<span>' + novel.chapters.length + ' chapters &middot; Vol. 1</span>' +
           '</div>' +
           '<button class="novel-btn">Start reading &#8594;</button>' +
         '</div>';
@@ -1789,7 +1786,8 @@
       const chapter = book.chapters[state.chapIdx];
       if (!chapter) return;
 
-      const sidebarLvl = book.level || chapter.level || '';
+      const isNovel = state.readingType === 'novel';
+      const sidebarLvl = isNovel ? '' : (book.level || chapter.level || '');
       document.getElementById('sidebarTitle').textContent = book.title;
       document.getElementById('sidebarLevel').textContent = sidebarLvl ? ('Level ' + sidebarLvl) : '';
 
@@ -1807,12 +1805,11 @@
 
     function renderChapterList() {
       const book = getCurrentBook();
-      const isNovel = state.readingType === 'novel';
       document.getElementById('chapterList').innerHTML = book.chapters.map((ch, ci) => `
         <button class="chapter-item ${ci === state.chapIdx ? 'active' : ''}" onclick="loadChapter(${ci})">
           <span class="chapter-num">${ci + 1}</span>
           <span class="chapter-info">
-            <span class="ch-title">${ch.title}${isNovel && ch.level ? ` <span class="ch-level-badge" style="background:${LEVEL_COLORS[ch.level] || '#888'}">${ch.level}</span>` : ''}</span>
+            <span class="ch-title">${ch.title}</span>
             <span class="ch-sub">${ch.subtitle}</span>
           </span>
         </button>
@@ -1851,8 +1848,9 @@
       const book = getCurrentBook();
       const ch = book.chapters[state.chapIdx];
       const modeClass = state.mode !== 'both' ? 'mode-' + state.mode : '';
-      const lvl = ch.level || book.level || '';
       const isNovel = state.readingType === 'novel';
+      const lvl = isNovel ? '' : (ch.level || book.level || '');
+      const glossLevel = isNovel ? 'A1' : (ch.level || book.level);
 
       const hasPrev = state.chapIdx > 0 || (!isNovel && state.bookIdx > 0);
       const hasNext = state.chapIdx < book.chapters.length - 1 || (!isNovel && state.bookIdx < BOOKS.length - 1);
@@ -1873,7 +1871,7 @@
             <div class="paragraph">
               ${para.map(([p, e]) => `
                 <div class="sentence-pair" onclick="revealSentence(this)">
-                  ${glossSentence(p, ch.level || book.level)}
+                  ${glossSentence(p, glossLevel)}
                   <div class="english-line">${e}</div>
                 </div>
               `).join('')}
