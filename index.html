@@ -694,6 +694,18 @@
     .chapter-info .ch-title { display: block; }
     .chapter-info .ch-sub { display: block; font-size: 0.75rem; opacity: 0.6; margin-top: 2px; font-style: italic; }
 
+    .ch-level-badge {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 10px;
+      color: #fff;
+      margin-left: 6px;
+      letter-spacing: 0.03em;
+      vertical-align: middle;
+    }
+
     .reader-main {
       margin-left: 280px;
       flex: 1;
@@ -999,6 +1011,99 @@
 
     .vocab-pinyin { font-weight: 600; font-size: 0.93rem; white-space: nowrap; }
     .vocab-english { color: var(--text-secondary); font-size: 0.84rem; text-align: right; }
+
+    /* ==============================
+       NOVEL SECTION (LANDING)
+       ============================== */
+    .novel-section { padding: 100px 40px; }
+
+    .novel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .novel-card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px 28px;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.25s, box-shadow 0.25s;
+      overflow: hidden;
+    }
+
+    .novel-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    }
+
+    .novel-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+
+    .novel-card .novel-icon {
+      font-size: 2.5rem;
+      line-height: 1;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .novel-card .novel-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .novel-card .novel-titleZh {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-bottom: 14px;
+    }
+
+    .novel-card .novel-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+
+    .novel-card .novel-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .novel-btn {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #6c5ce7;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s;
+    }
+
+    .novel-card:hover .novel-btn { gap: 8px; }
+
+    body.dark .novel-btn { color: #a29bfe; }
 
     /* ==============================
        GRAMMAR SECTION (LANDING)
@@ -1312,7 +1417,7 @@
       .hero-stats { gap: 24px; flex-wrap: wrap; }
       .navbar { padding: 0 20px; }
       .nav-link { display: none; }
-      .features-section, .books-section, .how-section, .grammar-section { padding: 60px 20px; }
+      .features-section, .books-section, .how-section, .grammar-section, .novel-section { padding: 60px 20px; }
       .grammar-topbar { padding: 12px 16px; }
       .grammar-content { padding: 32px 20px 80px; }
       .pattern-card { padding: 20px; }
@@ -1323,6 +1428,7 @@
     @media (max-width: 500px) {
       .mode-toggle { display: none; }
       .books-grid { grid-template-columns: 1fr; }
+      .novel-grid { grid-template-columns: 1fr; }
       .hero-title { font-size: 2rem; }
       .hero-desc { font-size: 1rem; }
       .hero-stats { gap: 16px; }
@@ -1343,6 +1449,7 @@
       <button class="nav-link" onclick="scrollToSection('features')">Features</button>
       <button class="nav-link" onclick="scrollToSection('books')">Books</button>
       <button class="nav-link" onclick="scrollToSection('grammar')">Grammar</button>
+      <button class="nav-link" onclick="scrollToSection('novels')">Novels</button>
       <button class="nav-link" onclick="scrollToSection('howto')">How It Works</button>
       <button class="nav-dark-toggle" onclick="toggleDark()" id="darkBtnNav" title="Toggle dark mode">&#9789;</button>
       <button class="nav-cta" onclick="scrollToSection('books')">Start Reading</button>
@@ -1453,6 +1560,16 @@
       <div class="grammar-grid" id="grammarGrid"></div>
     </section>
 
+    <!-- Novels -->
+    <section class="novel-section" id="novels">
+      <div class="section-header">
+        <div class="section-tag">Novels</div>
+        <h2 class="section-title">Read Full Novels</h2>
+        <p class="section-desc">Immerse yourself in complete stories translated into graded Mandarin — from beginner-friendly openings to intermediate chapters.</p>
+      </div>
+      <div class="novel-grid" id="novelGrid"></div>
+    </section>
+
     <!-- How It Works -->
     <section class="how-section" id="howto">
       <div class="section-header">
@@ -1554,6 +1671,7 @@
   <script src="data/book4.js"></script>
   <script src="data/book5.js"></script>
   <script src="data/grammar.js"></script>
+  <script src="data/novel1.js"></script>
   <script src="data/glossary.js"></script>
 
   <script>
@@ -1561,19 +1679,27 @@
     let state = {
       view: 'home',
       bookIdx: 0,
+      novelIdx: 0,
       chapIdx: 0,
       mode: 'both',
+      readingType: 'book',
       fontLevel: 0,
       grammarLevel: 0
     };
 
     const BOOKS = window.BOOKS || [];
+    const NOVELS = window.NOVELS || [];
     const GRAMMAR = window.GRAMMAR || [];
     const LEVEL_COLORS = { 'A1':'#27ae60','A2':'#2980b9','A2+':'#8e44ad','B1':'#d4781e','B1+':'#c0392b' };
     const LEVEL_GRADIENTS = { 'A1':'linear-gradient(135deg,#1e8449,#2ecc71)','A2':'linear-gradient(135deg,#1a5276,#3498db)','A2+':'linear-gradient(135deg,#6c3483,#af7ac5)','B1':'linear-gradient(135deg,#a0600e,#e67e22)','B1+':'linear-gradient(135deg,#922b21,#e74c3c)' };
     const MODES = ['both', 'pinyin', 'english', 'reveal'];
     const MODE_LABELS = { both: 'Both', pinyin: 'Pinyin', english: 'English', reveal: 'Reveal' };
     const LEVEL_CLASSES = { 'A1': 'level-a1', 'A2': 'level-a2', 'A2+': 'level-a2p', 'B1': 'level-b1', 'B1+': 'level-b1p' };
+
+    function getCurrentBook() {
+      if (state.readingType === 'novel') return NOVELS[state.novelIdx];
+      return BOOKS[state.bookIdx];
+    }
 
     /* ===== LANDING ===== */
     function renderHome() {
@@ -1595,6 +1721,7 @@
         </div>
       `).join('');
       renderGrammarSection();
+      renderNovelSection();
     }
 
     function scrollToSection(id) {
@@ -1602,6 +1729,7 @@
     }
 
     function openBook(bi, ci) {
+      state.readingType = 'book';
       ci = ci || 0;
       state.bookIdx = bi;
       state.chapIdx = ci;
@@ -1614,6 +1742,7 @@
 
     function goHome() {
       state.view = 'home';
+      state.readingType = 'book';
       document.getElementById('readerView').classList.add('hidden');
       document.getElementById('grammarView').classList.add('hidden');
       document.getElementById('vocabPanel').classList.remove('open');
@@ -1622,15 +1751,47 @@
       window.scrollTo(0, 0);
     }
 
+    function renderNovelSection() {
+      var grid = document.getElementById('novelGrid');
+      if (!grid) return;
+      grid.innerHTML = NOVELS.map(function(novel, ni) {
+        var levels = (novel.chapters || []).map(function(ch) { return ch.level; }).filter(Boolean);
+        var range = levels.length ? (levels[0] === levels[levels.length - 1] ? levels[0] : levels[0] + ' &#8594; ' + levels[levels.length - 1]) : '';
+        return '<div class="novel-card" onclick="openNovel(' + ni + ')">' +
+          '<span class="novel-icon">' + (novel.icon || '') + '</span>' +
+          '<div class="novel-title">' + novel.title + '</div>' +
+          '<div class="novel-titleZh">' + (novel.titleZh || '') + '</div>' +
+          '<p class="novel-desc">' + (novel.description || '') + '</p>' +
+          '<div class="novel-meta">' +
+            '<span>' + novel.chapters.length + ' chapters</span>' +
+            (range ? '<span>' + range + '</span>' : '') +
+          '</div>' +
+          '<button class="novel-btn">Start reading &#8594;</button>' +
+        '</div>';
+      }).join('');
+    }
+
+    function openNovel(ni) {
+      state.readingType = 'novel';
+      state.novelIdx = ni;
+      state.chapIdx = 0;
+      state.view = 'reader';
+      document.getElementById('landingView').classList.add('hidden');
+      document.getElementById('navbar').classList.add('hidden');
+      document.getElementById('readerView').classList.remove('hidden');
+      renderReader();
+    }
+
     /* ===== READER ===== */
     function renderReader() {
-      const book = BOOKS[state.bookIdx];
+      const book = getCurrentBook();
       if (!book) return;
       const chapter = book.chapters[state.chapIdx];
       if (!chapter) return;
 
+      const sidebarLvl = book.level || chapter.level || '';
       document.getElementById('sidebarTitle').textContent = book.title;
-      document.getElementById('sidebarLevel').textContent = 'Level ' + book.level;
+      document.getElementById('sidebarLevel').textContent = sidebarLvl ? ('Level ' + sidebarLvl) : '';
 
       document.getElementById('breadcrumbs').innerHTML =
         `<a onclick="goHome()">Library</a><span class="sep">/</span>` +
@@ -1645,12 +1806,13 @@
     }
 
     function renderChapterList() {
-      const book = BOOKS[state.bookIdx];
+      const book = getCurrentBook();
+      const isNovel = state.readingType === 'novel';
       document.getElementById('chapterList').innerHTML = book.chapters.map((ch, ci) => `
         <button class="chapter-item ${ci === state.chapIdx ? 'active' : ''}" onclick="loadChapter(${ci})">
           <span class="chapter-num">${ci + 1}</span>
           <span class="chapter-info">
-            <span class="ch-title">${ch.title}</span>
+            <span class="ch-title">${ch.title}${isNovel && ch.level ? ` <span class="ch-level-badge" style="background:${LEVEL_COLORS[ch.level] || '#888'}">${ch.level}</span>` : ''}</span>
             <span class="ch-sub">${ch.subtitle}</span>
           </span>
         </button>
@@ -1686,22 +1848,24 @@
     }
 
     function renderStory() {
-      const book = BOOKS[state.bookIdx];
+      const book = getCurrentBook();
       const ch = book.chapters[state.chapIdx];
       const modeClass = state.mode !== 'both' ? 'mode-' + state.mode : '';
+      const lvl = ch.level || book.level || '';
+      const isNovel = state.readingType === 'novel';
 
-      const hasPrev = state.chapIdx > 0 || state.bookIdx > 0;
-      const hasNext = state.chapIdx < book.chapters.length - 1 || state.bookIdx < BOOKS.length - 1;
+      const hasPrev = state.chapIdx > 0 || (!isNovel && state.bookIdx > 0);
+      const hasNext = state.chapIdx < book.chapters.length - 1 || (!isNovel && state.bookIdx < BOOKS.length - 1);
 
       document.getElementById('storyContent').innerHTML = `
         <div class="story-header">
-          <div class="story-label">${book.title} &middot; Level ${book.level}</div>
+          <div class="story-label">${book.title}${lvl ? ' &middot; Level ' + lvl : ''}</div>
           <h2 class="story-title">${ch.title}</h2>
           <p class="story-subtitle">${ch.subtitle}</p>
           <div class="story-meta">
             <span>&#128337; ${ch.readTime || ''}</span>
             <span>&#128221; ${ch.wordCount || ''}</span>
-            <span>&#127793; Level ${book.level}</span>
+            ${lvl ? `<span>&#127793; Level ${lvl}</span>` : ''}
           </div>
         </div>
         <div class="story-body ${modeClass}" id="storyBody">
@@ -1709,7 +1873,7 @@
             <div class="paragraph">
               ${para.map(([p, e]) => `
                 <div class="sentence-pair" onclick="revealSentence(this)">
-                  ${glossSentence(p, book.level)}
+                  ${glossSentence(p, ch.level || book.level)}
                   <div class="english-line">${e}</div>
                 </div>
               `).join('')}
@@ -1725,7 +1889,7 @@
     }
 
     function renderVocab() {
-      const ch = BOOKS[state.bookIdx].chapters[state.chapIdx];
+      const ch = getCurrentBook().chapters[state.chapIdx];
       document.getElementById('vocabBody').innerHTML = (ch.vocab || []).map(([p, e]) => `
         <div class="vocab-item">
           <span class="vocab-pinyin">${p}</span>
@@ -1742,10 +1906,13 @@
     }
 
     function navChapter(dir) {
-      const book = BOOKS[state.bookIdx];
+      const book = getCurrentBook();
       let newChap = state.chapIdx + dir;
       if (newChap >= 0 && newChap < book.chapters.length) {
         loadChapter(newChap);
+      } else if (state.readingType === 'novel') {
+        // Novels don't navigate across into other novels or books.
+        return;
       } else if (dir > 0 && state.bookIdx < BOOKS.length - 1) {
         openBook(state.bookIdx + 1, 0);
       } else if (dir < 0 && state.bookIdx > 0) {

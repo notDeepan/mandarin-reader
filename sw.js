@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mandarin-reader-v3';
+const CACHE_NAME = 'mandarin-reader-v4';
 const ASSETS = [
   '/',
   '/index.html',
@@ -8,6 +8,7 @@ const ASSETS = [
   '/data/book4.js',
   '/data/book5.js',
   '/data/grammar.js',
+  '/data/novel1.js',
   '/data/glossary.js',
   '/manifest.json'
 ];
