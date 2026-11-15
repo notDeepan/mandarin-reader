@@ -52,6 +52,7 @@ self.PACKS = {
     glossLevels: ['A1', 'A2', 'A2+'],
     speechLang: 'vi-VN',
     files: [
+      'langs/vi/book1.js',
       'langs/vi/glossary.js'
     ],
     copy: {

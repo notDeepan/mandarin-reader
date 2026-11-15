@@ -425,6 +425,12 @@ a:hover { text-decoration: underline; }
   user-select: none;
 }
 
+.book-card-cover .cover-char.cover-word {
+  font-size: 3.4rem;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
 .book-card-cover .cover-title {
   font-family: 'Noto Serif', serif;
   font-size: 1.35rem;

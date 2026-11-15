@@ -31,7 +31,7 @@ function renderHome() {
   grid.innerHTML = BOOKS.map((book, bi) => `
     <div class="book-card ${LEVEL_CLASSES[book.level] || 'level-a1'}" onclick="openBook(${bi})">
       <div class="book-card-cover">
-        <span class="cover-char">${book.icon || ''}</span>
+        <span class="cover-char${Array.from(book.icon || '').length > 1 ? ' cover-word' : ''}">${book.icon || ''}</span>
         <span class="cover-title">${book.title}</span>
       </div>
       <div class="book-card-body">
