@@ -42,6 +42,7 @@
     </div>
     <div class="nav-links">
       <button class="nav-link" data-nav="features" onclick="scrollToSection('features')">Features</button>
+      <button class="nav-link hidden" data-nav="tones" id="tonesNav" onclick="scrollToSection('tones')">Tones</button>
       <button class="nav-link" data-nav="books" onclick="scrollToSection('books')">Books</button>
       <button class="nav-link" data-nav="grammar" onclick="scrollToSection('grammar')">Grammar</button>
       <button class="nav-link" data-nav="novels" onclick="scrollToSection('novels')">Novels</button>
@@ -150,6 +151,18 @@
           <p>Fully responsive design. Read on your phone, tablet, or desktop. No app download needed.</p>
         </div>
       </div>
+    </section>
+
+    <!-- Tones -->
+    <section class="tones-section hidden" id="tones">
+      <div class="section-header">
+        <div class="section-tag">Pronunciation</div>
+        <h2 class="section-title" id="tonesTitle"></h2>
+        <p class="section-desc" id="tonesIntro"></p>
+      </div>
+      <div class="tones-grid" id="tonesGrid"></div>
+      <div class="tones-notes" id="tonesNotes"></div>
+      <p class="tones-credit hidden" id="tonesCredit"></p>
     </section>
 
     <!-- Books -->
@@ -280,6 +293,7 @@
   <script src="js/strings.js"></script>
   <script src="js/packs.js"></script>
   <script src="js/core.js"></script>
+  <script src="js/tones.js"></script>
 
   <script src="js/app.js"></script>
 </body>

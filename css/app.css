@@ -1593,3 +1593,119 @@ body.dark .novel-btn { color: #a29bfe; }
   .nav-dark-toggle { flex-shrink: 0; }
   .lang-menu { left: auto; right: 0; }
 }
+
+/* ==============================
+   TONES (Vietnamese)
+   ============================== */
+.tones-section { padding: 100px 40px; }
+
+.tones-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.tone-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.tone-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.tone-card.playing { border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent); }
+
+.tone-card-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.tone-name { font-family: 'Noto Serif', serif; font-size: 1.15rem; font-weight: 700; }
+.tone-mark-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); }
+
+.tone-mark {
+  margin: 10px 0 4px;
+  font-family: 'Noto Serif', serif;
+  font-size: 3.4rem;
+  line-height: 1.25;
+  color: var(--accent);
+}
+
+.tone-curve { width: 100%; height: 64px; margin: 4px 0 12px; overflow: visible; }
+.tone-guides line { stroke: var(--border); stroke-width: 0.6; stroke-dasharray: 2 3; }
+.tone-line { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.tone-dot { fill: var(--accent); }
+.tone-card.playing .tone-line { animation: toneDraw 0.9s ease; stroke-dasharray: 220; }
+@keyframes toneDraw { from { stroke-dashoffset: 220; } to { stroke-dashoffset: 0; } }
+
+.tone-describe { font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary); margin-bottom: 14px; }
+
+.tone-example {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
+.tone-word { font-family: 'Noto Serif', serif; font-size: 1.5rem; font-weight: 700; }
+.tone-meaning { font-size: 0.88rem; color: var(--text-muted); }
+
+.tone-play {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 8px 16px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.tone-play:hover, .tone-card.playing .tone-play { background: var(--accent); color: white; }
+.tone-play-icon { font-size: 0.7rem; }
+
+.tones-notes { max-width: 1100px; margin: 28px auto 0; display: grid; gap: 10px; }
+.tones-callout {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg-card));
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+}
+.tones-callout strong { color: var(--accent); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.tones-callout p { line-height: 1.55; }
+.tones-north, .tones-tip { font-size: 0.88rem; line-height: 1.55; color: var(--text-secondary); padding: 0 4px; }
+.tones-tip::before { content: 'Tip · '; font-weight: 700; color: var(--text); }
+.tones-credit { max-width: 1100px; margin: 18px auto 0; font-size: 0.75rem; color: var(--text-muted); text-align: right; }
+
+@media (max-width: 900px) {
+  .tones-section { padding: 60px 20px; }
+  .tones-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 500px) {
+  .tones-grid {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: 78%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tone-card { scroll-snap-align: start; }
+  .tone-card:hover { transform: none; }
+  .tones-callout { flex-direction: column; gap: 4px; }
+}

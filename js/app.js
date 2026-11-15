@@ -549,6 +549,9 @@ async function boot() {
   renderHome();
   setSectionVisible('grammar', GRAMMAR.length > 0);
   setSectionVisible('novels', NOVELS.length > 0);
+  document.getElementById('tonesNav').textContent = STRINGS.TONES_NAV;
+  setSectionVisible('tones', !!window.TONES);
+  if (window.TONES) Tones.render(window.TONES, state.pack.speechLang);
   registerServiceWorker();
 }
 

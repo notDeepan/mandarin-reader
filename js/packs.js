@@ -53,7 +53,16 @@ self.PACKS = {
     speechLang: 'vi-VN',
     files: [
       'langs/vi/book1.js',
-      'langs/vi/glossary.js'
+      'langs/vi/glossary.js',
+      'langs/vi/tones.js'
+    ],
+    audio: [
+      'audio/vi/tones/ngang.mp3',
+      'audio/vi/tones/huyen.mp3',
+      'audio/vi/tones/sac.mp3',
+      'audio/vi/tones/hoi.mp3',
+      'audio/vi/tones/nga.mp3',
+      'audio/vi/tones/nang.mp3'
     ],
     copy: {
       metaTitle: 'Learn Vietnamese Through Graded Stories',

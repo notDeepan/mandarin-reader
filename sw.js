@@ -9,7 +9,8 @@ const CORE_FILES = [
   'js/strings.js',
   'js/packs.js',
   'js/core.js',
-  'js/app.js'
+  'js/app.js',
+  'js/tones.js'
 ];
 
 self.addEventListener('install', e => {
