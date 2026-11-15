@@ -1,0 +1,9 @@
+{
+  "name": "story-reader",
+  "private": true,
+  "scripts": {
+    "test": "node --test \"tests/*.test.mjs\"",
+    "check": "node scripts/check-data.mjs",
+    "audio": "node scripts/gen-tone-audio.mjs"
+  }
+}
