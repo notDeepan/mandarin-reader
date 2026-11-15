@@ -498,6 +498,13 @@ function applyPackCopy(pack) {
 
 function registerServiceWorker() {
   if (!('serviceWorker' in navigator)) return;
+  var isLocal = ['localhost', '127.0.0.1'].indexOf(location.hostname) !== -1;
+  if (isLocal && !new URLSearchParams(location.search).has('sw')) {
+    navigator.serviceWorker.getRegistrations().then(function(regs) {
+      regs.forEach(function(r) { r.unregister(); });
+    });
+    return;
+  }
   navigator.serviceWorker.register('sw.js').catch(() => {});
 }
 
