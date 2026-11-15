@@ -57,6 +57,7 @@ self.PACKS = {
       'langs/vi/book3.js',
       'langs/vi/book4.js',
       'langs/vi/book5.js',
+      'langs/vi/novel1.js',
       'langs/vi/grammar.js',
       'langs/vi/glossary.js',
       'langs/vi/tones.js'

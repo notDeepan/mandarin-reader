@@ -2,7 +2,7 @@ import { pathToFileURL } from 'node:url';
 import { loadBrowserScripts } from './lib/load-scripts.mjs';
 
 const LEVELS = ['A1', 'A2', 'A2+', 'B1', 'B1+'];
-const TARGET_TOKENS = { A1: 130, A2: 265, 'A2+': 390, B1: 950, 'B1+': 1300, novel: 950 };
+const TARGET_TOKENS = { A1: 130, A2: 265, 'A2+': 390, B1: 950, 'B1+': 1300, novel: 1100 };
 const isStr = v => typeof v === 'string' && v.trim() !== '';
 const isPair = v => Array.isArray(v) && v.length === 2 && isStr(v[0]) && isStr(v[1]);
 
