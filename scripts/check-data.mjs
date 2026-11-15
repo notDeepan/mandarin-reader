@@ -56,6 +56,8 @@ export function checkPack(code) {
   const ctx = loadBrowserScripts(['js/core.js', 'js/packs.js']);
   const pack = ctx.PACKS[code];
   if (!pack) return { errors: [`unknown pack ${code}`], warnings, coverage, vocabCount: 0 };
+  const dupes = pack.files.filter((f, i) => pack.files.indexOf(f) !== i);
+  dupes.forEach(f => errors.push(`${f}: listed more than once in pack files`));
   for (const file of pack.files) {
     try { loadBrowserScripts([file], ctx); } catch (e) { errors.push(e.message); }
   }
