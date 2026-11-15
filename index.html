@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mandarin Reader — Learn Mandarin Through Graded Stories</title>
-  <meta name="description" content="Master Mandarin Chinese from A1 to B1+ through 30 beautifully crafted graded stories. Free, open-source, no account needed.">
-  <meta name="keywords" content="Mandarin, Chinese, learn Chinese, graded reader, pinyin, stories, HSK, language learning">
+  <title>Story Reader — Learn Languages Through Graded Stories</title>
+  <meta name="description" content="Learn languages through graded stories, from A1 to B1+. Free, open-source, no account needed.">
+  <meta name="keywords" content="graded reader, stories, language learning">
   <meta name="author" content="Deepan Goswami">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Mandarin Reader — Learn Mandarin Through Stories">
-  <meta property="og:description" content="30 graded stories from A1 beginner to B1+ intermediate. Mystery, sci-fi, romance & more — all in pinyin with English translations.">
+  <meta property="og:title" content="Story Reader — Learn Languages Through Stories">
+  <meta property="og:description" content="Graded stories from A1 beginner to B1+ intermediate, with English under every line.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=1200&h=630&fit=crop">
   <meta name="twitter:card" content="summary_large_image">
@@ -36,31 +36,52 @@
       <div class="brand-icon" id="brandMark">SR</div>
       <span id="brandName">Story Reader</span>
     </div>
+    <div class="lang-switch hidden" id="langSwitch">
+      <button class="lang-switch-btn" id="langSwitchBtn" onclick="toggleLangMenu(event)" aria-haspopup="true" aria-expanded="false"></button>
+      <div class="lang-menu hidden" id="langMenu" role="menu"></div>
+    </div>
     <div class="nav-links">
-      <button class="nav-link" onclick="scrollToSection('features')">Features</button>
-      <button class="nav-link" onclick="scrollToSection('books')">Books</button>
-      <button class="nav-link" onclick="scrollToSection('grammar')">Grammar</button>
-      <button class="nav-link" onclick="scrollToSection('novels')">Novels</button>
-      <button class="nav-link" onclick="scrollToSection('howto')">How It Works</button>
+      <button class="nav-link" data-nav="features" onclick="scrollToSection('features')">Features</button>
+      <button class="nav-link" data-nav="books" onclick="scrollToSection('books')">Books</button>
+      <button class="nav-link" data-nav="grammar" onclick="scrollToSection('grammar')">Grammar</button>
+      <button class="nav-link" data-nav="novels" onclick="scrollToSection('novels')">Novels</button>
+      <button class="nav-link" data-nav="howto" onclick="scrollToSection('howto')">How It Works</button>
       <button class="nav-dark-toggle" onclick="toggleDark()" id="darkBtnNav" title="Toggle dark mode">&#9789;</button>
       <button class="nav-cta" onclick="scrollToSection('books')">Start Reading</button>
     </div>
   </nav>
+
+  <!-- ===== LANGUAGE CHOOSER ===== -->
+  <div class="lang-chooser hidden" id="langChooser">
+    <div class="lang-chooser-inner">
+      <div class="lang-chooser-brand"><div class="brand-icon" id="chooserMark">SR</div><span id="chooserName">Story Reader</span></div>
+      <h1 class="lang-chooser-title" id="chooserTitle"></h1>
+      <p class="lang-chooser-sub" id="chooserSub"></p>
+      <div class="lang-cards" id="langCards"></div>
+    </div>
+  </div>
+
+  <!-- ===== LOAD ERROR ===== -->
+  <div class="load-error hidden" id="loadError">
+    <div class="load-error-inner">
+      <p id="loadErrorMsg"></p>
+      <div class="load-error-actions">
+        <button class="btn-primary" id="loadErrorRetry" onclick="location.reload()"></button>
+        <button class="btn-secondary" id="loadErrorOther" onclick="chooseOtherLang()"></button>
+      </div>
+    </div>
+  </div>
 
   <!-- ===== LANDING PAGE ===== -->
   <div class="landing" id="landingView">
 
     <!-- Hero -->
     <section class="hero-section">
-      <div class="hero-bg-chars">读书学习</div>
+      <div class="hero-bg-chars" data-copy="heroBg">读书学习</div>
       <div class="hero-content">
         <div class="hero-badge">&#10024; 100% Free &middot; No Account Needed</div>
-        <h1 class="hero-title">
-          Learn Mandarin<br>Through <span class="highlight">Stories</span>
-        </h1>
-        <p class="hero-desc">
-          Master Mandarin Chinese from absolute beginner to intermediate through 30 beautifully crafted graded stories — mystery, sci-fi, romance, and more.
-        </p>
+        <h1 class="hero-title" data-copy="heroTitle"></h1>
+        <p class="hero-desc" id="heroDesc"></p>
         <div class="hero-actions">
           <button class="btn-primary" onclick="scrollToSection('books')">
             Start Reading Free &#8594;
@@ -71,19 +92,19 @@
         </div>
         <div class="hero-stats">
           <div class="hero-stat">
-            <div class="stat-num">30</div>
+            <div class="stat-num" id="statStories">30</div>
             <div class="stat-label">Stories</div>
           </div>
           <div class="hero-stat">
-            <div class="stat-num">5</div>
+            <div class="stat-num" id="statLevels">5</div>
             <div class="stat-label">Levels</div>
           </div>
           <div class="hero-stat">
-            <div class="stat-num">A1–B1+</div>
+            <div class="stat-num" id="statRange">A1–B1+</div>
             <div class="stat-label">Range</div>
           </div>
           <div class="hero-stat">
-            <div class="stat-num">1000+</div>
+            <div class="stat-num" id="statVocab">1000+</div>
             <div class="stat-label">Vocab Words</div>
           </div>
         </div>
@@ -106,7 +127,7 @@
         <div class="feature-card">
           <div class="feature-icon" style="background: rgba(41,128,185,0.1); color: #2980b9;">&#128064;</div>
           <h3>4 Reading Modes</h3>
-          <p>Read with both pinyin and English, pinyin-only for challenge, English-only for review, or reveal mode to test yourself.</p>
+          <p data-copy="modesFeature"></p>
         </div>
         <div class="feature-card">
           <div class="feature-icon" style="background: rgba(142,68,173,0.1); color: #8e44ad;">&#128218;</div>
@@ -136,7 +157,7 @@
       <div class="section-header">
         <div class="section-tag">Library</div>
         <h2 class="section-title">Choose Your Level</h2>
-        <p class="section-desc">Five books, thirty stories. Start wherever you are.</p>
+        <p class="section-desc" data-copy="booksDesc"></p>
       </div>
       <div class="books-grid" id="booksGrid"></div>
     </section>
@@ -146,7 +167,7 @@
       <div class="section-header">
         <div class="section-tag">Grammar</div>
         <h2 class="section-title">Sentence Patterns</h2>
-        <p class="section-desc">Learn how Chinese sentences are built — from basic SVO to advanced literary patterns.</p>
+        <p class="section-desc" data-copy="grammarDesc"></p>
       </div>
       <div class="grammar-grid" id="grammarGrid"></div>
     </section>
@@ -156,7 +177,7 @@
       <div class="section-header">
         <div class="section-tag">Novels</div>
         <h2 class="section-title">Read Full Novels</h2>
-        <p class="section-desc">Immerse yourself in complete stories translated into graded Mandarin — from beginner-friendly openings to intermediate chapters.</p>
+        <p class="section-desc" data-copy="novelsDesc"></p>
       </div>
       <div class="novel-grid" id="novelGrid"></div>
     </section>
@@ -177,7 +198,7 @@
         <div class="step-card">
           <div class="step-number">2</div>
           <h3>Read the Story</h3>
-          <p>Each sentence shows pinyin with an English translation. Hover to highlight, click to reveal in test mode.</p>
+          <p data-copy="howRead"></p>
         </div>
         <div class="step-card">
           <div class="step-number">3</div>
@@ -195,12 +216,12 @@
     <!-- Footer -->
     <footer class="site-footer">
       <div class="footer-brand" id="footerBrand">Story Reader</div>
-      <p class="footer-desc">An open-source project for learning Mandarin Chinese through the joy of reading.</p>
+      <p class="footer-desc" data-copy="footerDesc"></p>
       <div class="footer-links">
-        <a href="https://github.com/gdeepan/mandarin-reader" target="_blank">GitHub</a>
+        <a href="https://github.com/notDeepan/mandarin-reader" target="_blank" rel="noopener">GitHub</a>
         <a href="#books" onclick="event.preventDefault(); scrollToSection('books')">Start Reading</a>
       </div>
-      <div class="footer-copy">&copy; 2025 Mandarin Reader. Made with &#10084;&#65039; for language learners.</div>
+      <div class="footer-copy">&copy; 2025 <span id="footerCopyName">Story Reader</span>. Made with &#10084;&#65039; for language learners.</div>
     </footer>
   </div>
 

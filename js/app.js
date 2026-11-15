@@ -259,7 +259,7 @@ function adjustFont(dir) {
 function toggleDark() {
   document.body.classList.toggle('dark');
   const isDark = document.body.classList.contains('dark');
-  localStorage.setItem('mandarin-reader-dark', isDark);
+  localStorage.setItem('reader-dark', isDark);
   const icon = isDark ? '&#9788;' : '&#9789;';
   document.querySelectorAll('#darkBtnNav, #darkBtnReader, #darkBtnGrammar').forEach(el => el.innerHTML = icon);
 }
@@ -385,26 +385,164 @@ function loadScripts(files) {
   }));
 }
 
+function setSectionVisible(id, visible) {
+  var section = document.getElementById(id);
+  if (section) section.classList.toggle('hidden', !visible);
+  document.querySelectorAll('[data-nav="' + id + '"]').forEach(function(btn) {
+    btn.classList.toggle('hidden', !visible);
+  });
+}
+
+function switchLang(code) {
+  localStorage.setItem('reader-lang', code);
+  location.replace(Core.stripLangParam(location.href));
+}
+
+function chooseOtherLang() {
+  localStorage.removeItem('reader-lang');
+  location.replace(Core.stripLangParam(location.href));
+}
+
+function packIconClass(pack) {
+  return Array.from(pack.icon).length > 1 ? ' is-word' : '';
+}
+
+function betaBadge(pack) {
+  return pack.beta ? ' <span class="beta-badge">' + STRINGS.BETA + '</span>' : '';
+}
+
+function showChooser() {
+  document.title = STRINGS.APP_NAME + ' — ' + STRINGS.CHOOSER_META_TITLE;
+  document.getElementById('chooserMark').textContent = STRINGS.BRAND_MARK;
+  document.getElementById('chooserName').textContent = STRINGS.APP_NAME;
+  document.getElementById('chooserTitle').textContent = STRINGS.CHOOSER_TITLE;
+  document.getElementById('chooserSub').textContent = STRINGS.CHOOSER_SUB;
+  document.getElementById('langCards').innerHTML = Object.keys(PACKS).map(function(code) {
+    var p = PACKS[code];
+    return '<button class="lang-card" onclick="switchLang(\'' + code + '\')">' +
+      '<span class="lang-card-icon' + packIconClass(p) + '">' + p.icon + '</span>' +
+      '<span class="lang-card-name">' + p.name + betaBadge(p) + '</span>' +
+      '<span class="lang-card-native">' + p.nativeName + '</span>' +
+      '<span class="lang-card-levels">' + p.levels + '</span>' +
+      '<span class="lang-card-blurb">' + p.blurb + '</span>' +
+      '<span class="lang-card-go">Start learning &#8594;</span>' +
+    '</button>';
+  }).join('');
+  document.getElementById('navbar').classList.add('hidden');
+  document.getElementById('landingView').classList.add('hidden');
+  document.getElementById('langChooser').classList.remove('hidden');
+}
+
+function showLoadError(pack) {
+  document.getElementById('loadErrorMsg').textContent = Core.fill(STRINGS.LOAD_ERROR, { name: pack.name });
+  document.getElementById('loadErrorRetry').textContent = STRINGS.RETRY;
+  document.getElementById('loadErrorOther').textContent = STRINGS.CHOOSE_OTHER;
+  document.getElementById('navbar').classList.add('hidden');
+  document.getElementById('landingView').classList.add('hidden');
+  document.getElementById('loadError').classList.remove('hidden');
+}
+
+function renderLangSwitch() {
+  var pack = state.pack;
+  document.getElementById('langSwitchBtn').innerHTML =
+    '<span>' + pack.nativeName + '</span>' + betaBadge(pack) + '<span class="caret">&#9660;</span>';
+  document.getElementById('langMenu').innerHTML = Object.keys(PACKS).map(function(code) {
+    var p = PACKS[code];
+    var current = code === pack.code;
+    return '<button class="lang-menu-item' + (current ? ' current' : '') + '" role="menuitem"' +
+      (current ? ' aria-current="true"' : ' onclick="switchLang(\'' + code + '\')"') + '>' +
+      '<span class="lmi-icon">' + p.icon + '</span>' +
+      '<span>' + p.nativeName + betaBadge(p) + '<span class="lmi-sub">' + p.name + '</span></span>' +
+    '</button>';
+  }).join('');
+  document.getElementById('langSwitch').classList.remove('hidden');
+}
+
+function toggleLangMenu(e, force) {
+  if (e) e.stopPropagation();
+  var menu = document.getElementById('langMenu');
+  var open = typeof force === 'boolean' ? force : menu.classList.contains('hidden');
+  menu.classList.toggle('hidden', !open);
+  document.getElementById('langSwitchBtn').setAttribute('aria-expanded', String(open));
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('#langSwitch')) toggleLangMenu(null, false);
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') toggleLangMenu(null, false);
+});
+
+function setMeta(selector, value) {
+  var el = document.querySelector(selector);
+  if (el) el.setAttribute('content', value);
+}
+
+function applyPackCopy(pack) {
+  var copy = pack.copy;
+  var stats = Core.heroStats(BOOKS);
+  document.querySelectorAll('[data-copy]').forEach(function(el) {
+    el.innerHTML = copy[el.getAttribute('data-copy')] || '';
+  });
+  document.getElementById('heroDesc').innerHTML = Core.fill(copy.heroDesc, stats);
+  document.getElementById('statStories').textContent = stats.stories;
+  document.getElementById('statLevels').textContent = stats.levels;
+  document.getElementById('statRange').textContent = stats.range;
+  document.getElementById('statVocab').textContent = copy.vocabStat;
+  document.title = STRINGS.APP_NAME + ' — ' + copy.metaTitle;
+  setMeta('meta[name="description"]', copy.metaDescription);
+  setMeta('meta[name="keywords"]', copy.keywords);
+  setMeta('meta[property="og:title"]', STRINGS.APP_NAME + ' — ' + copy.ogTitle);
+  setMeta('meta[property="og:description"]', copy.ogDescription);
+}
+
+function registerServiceWorker() {
+  if (!('serviceWorker' in navigator)) return;
+  navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+
 async function boot() {
-  if (localStorage.getItem('mandarin-reader-dark') === 'true') {
+  var migrated = Core.migrateStorage(localStorage);
+  if (localStorage.getItem('reader-dark') === 'true') {
     document.body.classList.add('dark');
     document.querySelectorAll('#darkBtnNav, #darkBtnReader').forEach(el => el.innerHTML = '&#9788;');
   }
+  ['brandName', 'footerBrand', 'footerCopyName'].forEach(function(id) {
+    document.getElementById(id).textContent = STRINGS.APP_NAME;
+  });
   document.getElementById('brandMark').textContent = STRINGS.BRAND_MARK;
-  document.getElementById('brandName').textContent = STRINGS.APP_NAME;
-  document.getElementById('footerBrand').textContent = STRINGS.APP_NAME;
 
-  state.pack = PACKS.zh;
+  var code = Core.pickLang({
+    query: new URLSearchParams(location.search).get('lang'),
+    stored: localStorage.getItem('reader-lang'),
+    hadLegacy: migrated.hadLegacy,
+    packs: PACKS
+  });
+  if (!code) {
+    showChooser();
+    registerServiceWorker();
+    return;
+  }
+  localStorage.setItem('reader-lang', code);
+  state.pack = PACKS[code];
   MODE_LABELS.target = state.pack.targetLabel;
-  await loadScripts(state.pack.files);
+
+  try {
+    await loadScripts(state.pack.files);
+  } catch (err) {
+    showLoadError(state.pack);
+    return;
+  }
   BOOKS = window.BOOKS || [];
   NOVELS = window.NOVELS || [];
   GRAMMAR = window.GRAMMAR || [];
-  renderHome();
 
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
-  }
+  applyPackCopy(state.pack);
+  renderLangSwitch();
+  renderHome();
+  setSectionVisible('grammar', GRAMMAR.length > 0);
+  setSectionVisible('novels', NOVELS.length > 0);
+  registerServiceWorker();
 }
 
 boot();
