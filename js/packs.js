@@ -85,7 +85,7 @@ self.PACKS = {
       novelsDesc: 'Immerse yourself in complete stories retold in graded Vietnamese — every chapter with word-by-word meanings.',
       howRead: 'Each sentence shows Vietnamese with an English translation. Hover to highlight, click to reveal in test mode.',
       footerDesc: 'An open-source project for learning Vietnamese through the joy of reading.',
-      vocabStat: '0'
+      vocabStat: '1300+'
     }
   }
 };
