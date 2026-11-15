@@ -582,6 +582,480 @@ window.NOVELS = [{
         ["công nhận", "to recognize"],
         ["trông cậy", "to count on"]
       ]
+    },
+    {
+      title: "Cuộc Đấu Trí",
+      subtitle: "Battle of Wits — Chapter 3",
+      level: "B1",
+      readTime: "30 min",
+      wordCount: "~1060 words",
+      paragraphs: [
+        [
+          ["Người ta mang một bàn cờ khổng lồ vào giữa đại sảnh.", "A huge chessboard was carried into the middle of the great hall."],
+          ["Nhưng đây không phải là một bàn cờ bình thường.", "But this was no ordinary chessboard."],
+          ["Ở Disboard, quân cờ vua là những người thật, có ý chí và cảm xúc riêng.", "In Disboard, chess pieces are real people, with wills and feelings of their own."],
+          ["Nếu quân cờ không tin người chơi, chúng có thể từ chối làm theo lệnh.", "If the pieces don't trust their player, they can refuse to follow orders."]
+        ],
+        [
+          ["Chlammy ngồi một bên bàn cờ, người bạn Elf đứng phía sau cô.", "Chlammy sat on one side of the board, her Elf friend standing behind her."],
+          ["Cô gái Elf tên là Feel, tóc vàng, nụ cười dịu dàng.", "The Elf was called Feel, with golden hair and a gentle smile."],
+          ["Nhưng trong mắt cô ấy ẩn giấu một sức mạnh phép thuật rất lớn.", "But hidden in her eyes was enormous magical power."],
+          ["Sora biết Feel sẽ dùng phép thuật đọc suy nghĩ của đối thủ, giúp Chlammy đoán trước từng nước đi.", "Sora knew Feel would use magic to read the opponent's thoughts and help Chlammy predict every move."]
+        ],
+        [
+          ["Shiro ngồi bên kia bàn cờ, Sora đứng phía sau em.", "Shiro sat on the other side of the board, with Sora standing behind her."],
+          ["Cả đại sảnh im lặng theo dõi, gần như không ai dám thở mạnh.", "The whole hall watched in silence, hardly anyone daring to breathe."],
+          ["Sora cúi xuống, nói nhỏ vào tai Shiro: \"Ván cờ này khác cờ vua bình thường.\"", "Sora leaned down and whispered in Shiro's ear: \"This game is different from ordinary chess.\""],
+          ["\"Quân cờ là người sống. Chúng có suy nghĩ riêng.\"", "\"The pieces are alive. They have their own thoughts.\""],
+          ["\"Nên đây không chỉ là trò chơi tính toán, mà còn là trò chơi tâm lý.\"", "\"So this isn't just a game of calculation — it's a game of psychology too.\""]
+        ],
+        [
+          ["Ván cờ bắt đầu.", "The game began."],
+          ["Nước đầu tiên của Chlammy rất mạnh mẽ: cô đẩy một quân tốt lên hai ô.", "Chlammy's first move was aggressive: she pushed a pawn forward two squares."],
+          ["Shiro bình tĩnh đáp lại, cũng đẩy một quân tốt.", "Shiro calmly answered, pushing a pawn of her own."],
+          ["Mấy nước đầu trông rất bình thường, nhưng Sora biết trận chiến thật sự đã bắt đầu.", "The first few moves looked ordinary, but Sora knew the real battle had already begun."]
+        ],
+        [
+          ["Tới nước thứ mười, thế cờ bắt đầu phức tạp.", "By the tenth move, the position was getting complicated."],
+          ["Quân cờ của Chlammy rất nghe lời, làm theo mọi lệnh mà không do dự.", "Chlammy's pieces were very obedient, carrying out every order without hesitation."],
+          ["Nhưng quân cờ của Shiro thì hơi chần chừ.", "But Shiro's pieces were hesitant."],
+          ["Vì Shiro quá ít nói, gần như không nói gì cả.", "Because Shiro spoke so little — almost not at all."],
+          ["Quân cờ không biết cô là ai, cũng không biết kế hoạch của cô. Có vài quân còn từ chối lệnh của cô.", "The pieces didn't know who she was or what her plan was. A few even refused her orders."]
+        ],
+        [
+          ["Sora thấy vấn đề đó.", "Sora saw the problem."],
+          ["Anh bước tới trước bàn cờ, nói với các quân cờ của Shiro: \"Chào mọi người. Tôi biết mọi người không quen tụi tôi.\"", "He stepped up to the board and spoke to Shiro's pieces: \"Hello, everyone. I know you don't know us.\""],
+          ["\"Nhưng hãy tin tụi tôi. Tụi tôi chắc chắn sẽ bảo vệ mọi người.\"", "\"But please trust us. We will definitely protect you.\""],
+          ["\"Tôi sẽ không để quân nào hy sinh vô ích.\"", "\"I won't let a single piece be sacrificed for nothing.\""],
+          ["Các quân cờ nhìn vào mắt Sora, thấy được sự chân thành. Từ đó, chúng bắt đầu nghe lời Shiro.", "The pieces looked into Sora's eyes and saw that he meant it. From then on, they began to follow Shiro's commands."]
+        ],
+        [
+          ["Chlammy nhíu mày. Cô không ngờ đối thủ lại dùng cách này.", "Chlammy frowned. She hadn't expected her opponent to try this."],
+          ["Cô gật đầu ra hiệu cho Feel.", "She gave Feel a nod."],
+          ["Feel tăng sức mạnh phép thuật, cố đọc suy nghĩ của Shiro.", "Feel strengthened her magic and tried to read Shiro's thoughts."],
+          ["Nhưng cô phát hiện ra một vấn đề: suy nghĩ của Shiro quá nhanh.", "But she ran into a problem: Shiro's thoughts were far too fast."],
+          ["Trong đầu Shiro, mỗi giây có hàng trăm phép tính chạy cùng lúc. Phép thuật của Feel không theo kịp.", "Inside Shiro's head, hundreds of calculations ran every second. Feel's magic simply couldn't keep up."]
+        ],
+        [
+          ["Ván cờ bước vào giai đoạn giữa.", "The game moved into the middlegame."],
+          ["Nhờ phép thuật, Chlammy tấn công dồn dập.", "With magic on her side, Chlammy attacked relentlessly."],
+          ["Shiro mất liền mấy quân, thế cờ có vẻ bất lợi cho cô.", "Shiro lost several pieces in a row, and the position looked bad for her."],
+          ["Khán giả bắt đầu lo lắng. Có người nói nhỏ: \"Cô bé tóc trắng sắp thua rồi phải không?\"", "The audience began to worry. Someone whispered: \"The white-haired girl is about to lose, isn't she?\""]
+        ],
+        [
+          ["Nhưng Sora không lo chút nào.", "But Sora wasn't worried at all."],
+          ["Anh cúi xuống nói với Shiro: \"Tốt lắm. Cứ tiếp tục.\"", "He leaned down and told Shiro: \"Very good. Keep going.\""],
+          ["Shiro khẽ gật đầu.", "Shiro gave a slight nod."],
+          ["Sora biết những quân cờ Shiro mất đều là cố ý.", "Sora knew that every piece Shiro had lost was lost on purpose."],
+          ["Cô đang dụ Chlammy bước vào một cái bẫy được tính toán rất kỹ.", "She was luring Chlammy into a carefully calculated trap."]
+        ],
+        [
+          ["Sora quay sang quan sát nét mặt Chlammy.", "Sora turned to study Chlammy's face."],
+          ["Anh thấy trong mắt cô có một chút căng thẳng.", "He saw a hint of tension in her eyes."],
+          ["Tuy mặt cô lạnh lùng, nhưng Sora nhìn ra: cô không tự tin như vẻ bề ngoài.", "Though her face was cold, Sora could tell she wasn't as confident as she looked."],
+          ["Sora nói với Shiro: \"Cô ta sẽ cố tình để lộ sơ hở để lừa em.\"", "Sora told Shiro: \"She'll deliberately show you an opening to trick you.\""],
+          ["\"Đừng nhìn quân cờ của cô ta. Hãy nhìn mắt cô ta.\" Shiro đáp: \"Em hiểu rồi.\"", "\"Don't watch her pieces. Watch her eyes.\" Shiro answered: \"Got it.\""]
+        ],
+        [
+          ["Đó chính là bí mật của \"Khoảng Trắng\".", "That was the secret of \"Blank.\""],
+          ["Shiro lo phần tính toán: cô có thể mô phỏng mọi nước đi có thể xảy ra trong đầu.", "Shiro took care of the calculation: she could simulate every possible move in her head."],
+          ["Sora lo phần đọc người: anh đoán được tâm lý đối thủ qua những nét mặt và cử động nhỏ nhất.", "Sora took care of reading people: he could read an opponent's mind from the smallest expressions and movements."],
+          ["Một người là cỗ máy logic hoàn hảo, một người là chuyên gia tâm lý hoàn hảo.", "One was a perfect logic machine, the other a perfect psychologist."],
+          ["Khi hai người phối hợp, không ai có thể đánh bại họ.", "When the two of them worked together, no one could defeat them."]
+        ],
+        [
+          ["Ván cờ bước vào giai đoạn cuối.", "The game entered its final stage."],
+          ["Phép thuật của Chlammy gần như cạn kiệt.", "Chlammy's magic was almost exhausted."],
+          ["Mặt Feel đã trắng bệch, cô gần như không chịu nổi nữa.", "Feel's face had gone white; she could barely hold on."],
+          ["Nhưng Shiro vẫn đi rất vững vàng.", "But Shiro was still playing steadily."],
+          ["Cô không vội tấn công. Cô đang chờ một thời điểm hoàn hảo.", "She wasn't in a hurry to attack. She was waiting for the perfect moment."]
+        ],
+        [
+          ["Sora nhìn thấy thời điểm đó.", "Sora saw that moment."],
+          ["Anh chỉ nói một chữ: \"Bây giờ.\"", "He said just one word: \"Now.\""],
+          ["Tay Shiro di chuyển. Cô đưa quân hậu tới một vị trí trông rất bình thường.", "Shiro's hand moved. She placed her queen on a square that looked perfectly ordinary."],
+          ["Nhưng chỉ một nước đó đã chặn hết mọi đường thoát của Chlammy.", "But that single move cut off every escape route Chlammy had."]
+        ],
+        [
+          ["Chlammy nhìn chằm chằm bàn cờ, mặt biến sắc.", "Chlammy stared at the board, the color draining from her face."],
+          ["Cuối cùng cô cũng hiểu: cô đã bước vào bẫy.", "At last she understood: she had walked into a trap."],
+          ["Ngay từ đầu, Shiro đã giăng sẵn cái bẫy này.", "From the very beginning, Shiro had been setting this trap."],
+          ["Những quân cờ bị mất chỉ là mồi để dụ cô tới đây.", "The pieces she had lost were only bait to lure her here."],
+          ["Tay Chlammy run lên.", "Chlammy's hands began to tremble."]
+        ],
+        [
+          ["Shiro bình tĩnh đi nước cuối cùng.", "Shiro calmly made the final move."],
+          ["Giọng cô rất nhỏ, nhưng trong đại sảnh im phăng phắc, ai cũng nghe thấy: \"Chiếu hết.\"", "Her voice was very soft, but in the utterly silent hall, everyone heard it: \"Checkmate.\""],
+          ["Cả đại sảnh lặng đi một giây.", "For a second, the whole hall was still."],
+          ["Rồi tiếng reo hò vang dậy: \"Loài người thắng rồi! Loài người thắng rồi!\"", "Then the cheers thundered: \"Humanity won! Humanity won!\""]
+        ],
+        [
+          ["Chlammy đứng dậy, nước mắt rưng rưng.", "Chlammy stood up, her eyes brimming with tears."],
+          ["Cô không khóc vì thua.", "She wasn't crying because she had lost."],
+          ["Cô khóc vì cô thật lòng thương loài người.", "She was crying because she truly loved humanity."],
+          ["Cô chỉ nghĩ loài người quá yếu, không thể tự mình thắng, nên mới hợp tác với tộc Elf.", "She had simply thought humans were too weak to win on their own, which is why she had joined forces with the Elves."],
+          ["Cô đã chọn sai đường.", "She had chosen the wrong path."]
+        ],
+        [
+          ["Sora bước tới trước mặt Chlammy, nói nghiêm túc: \"Cô không phải người xấu. Cô chỉ dùng sai cách.\"", "Sora walked up to Chlammy and said seriously: \"You're not a bad person. You just used the wrong method.\""],
+          ["\"Cô với tôi giống nhau, đều muốn cứu loài người.\"", "\"You and I are the same. We both want to save humanity.\""],
+          ["\"Nhưng cô nghĩ loài người không thể dựa vào sức mình. Cô sai rồi.\"", "\"But you thought humans couldn't rely on their own strength. You were wrong.\""],
+          ["\"Loài người mạnh hơn cô tưởng nhiều.\"", "\"Humanity is far stronger than you think.\""],
+          ["Chlammy bật khóc nức nở.", "Chlammy broke down sobbing."]
+        ],
+        [
+          ["Sora quay lại, nhìn mọi người trong đại sảnh.", "Sora turned to face everyone in the hall."],
+          ["Anh giơ hai tay lên, nói lớn: \"Loài người quả thật rất yếu!\"", "He raised both hands and said loudly: \"Humans really are weak!\""],
+          ["Mọi người bỗng im bặt.", "Everyone fell silent at once."],
+          ["\"Chúng ta không có phép thuật, không có cơ thể mạnh, không sống lâu. Chúng ta không có gì cả.\"", "\"We have no magic, no strong bodies, no long lives. We have nothing at all.\""]
+        ],
+        [
+          ["\"Nhưng mà...\" Sora ngừng lại, mắt lóe sáng.", "\"But...\" Sora paused, his eyes flashing."],
+          ["\"Chính vì yếu, chúng ta mới học cách suy nghĩ.\"", "\"It's precisely because we're weak that we learned to think.\""],
+          ["\"Chính vì không có gì, chúng ta mới tưởng tượng được mọi khả năng.\"", "\"It's precisely because we have nothing that we can imagine every possibility.\""],
+          ["\"Đó là sức mạnh của loài người!\"", "\"That is the strength of humanity!\""],
+          ["\"Chúng ta không cần phép thuật, không cần siêu năng lực. Chúng ta có lòng dũng cảm, trí tuệ, và tinh thần không bao giờ bỏ cuộc!\"", "\"We don't need magic, we don't need superpowers. We have courage, wisdom, and a spirit that never gives up!\""]
+        ]
+      ],
+      vocab: [
+        ["cuộc đấu trí", "battle of wits"],
+        ["ý chí", "will"],
+        ["từ chối", "to refuse"],
+        ["lệnh", "order, command"],
+        ["dịu dàng", "gentle"],
+        ["ẩn giấu", "hidden"],
+        ["sức mạnh", "power, strength"],
+        ["đoán trước", "to predict"],
+        ["theo dõi", "to watch, follow"],
+        ["tâm lý", "psychology"],
+        ["mạnh mẽ", "forceful, aggressive"],
+        ["quân tốt", "pawn"],
+        ["ô", "square (on a board)"],
+        ["thế cờ", "position (in a game)"],
+        ["nghe lời", "to obey"],
+        ["kế hoạch", "plan"],
+        ["hy sinh", "to sacrifice"],
+        ["chân thành", "sincere, sincerity"],
+        ["nhíu mày", "to frown"],
+        ["ra hiệu", "to signal"],
+        ["phép tính", "calculation"],
+        ["theo kịp", "to keep up"],
+        ["tấn công", "to attack"],
+        ["dồn dập", "relentless"],
+        ["bất lợi", "disadvantageous"],
+        ["khán giả", "audience"],
+        ["dụ", "to lure"],
+        ["bẫy", "trap"],
+        ["sơ hở", "flaw, opening"],
+        ["mô phỏng", "to simulate"],
+        ["chuyên gia", "expert"],
+        ["cạn kiệt", "exhausted, used up"],
+        ["vững vàng", "steady"],
+        ["quân hậu", "queen"],
+        ["đường thoát", "escape route"],
+        ["biến sắc", "to turn pale"],
+        ["giăng bẫy", "to set a trap"],
+        ["mồi", "bait"],
+        ["reo hò", "to cheer"],
+        ["nức nở", "to sob"],
+        ["im bặt", "to fall silent"],
+        ["siêu năng lực", "superpower"],
+        ["dũng cảm", "brave, courage"],
+        ["tinh thần", "spirit"]
+      ]
+    },
+    {
+      title: "Vua Của Loài Người",
+      subtitle: "Humanity's King — Chapter 4",
+      level: "B1",
+      readTime: "28 min",
+      wordCount: "~840 words",
+      paragraphs: [
+        [
+          ["Thế là Sora và Shiro trở thành vua mới của Elkia.", "And so Sora and Shiro became the new king of Elkia."],
+          ["Lễ đăng quang được tổ chức trong đại sảnh của lâu đài.", "The coronation was held in the castle's great hall."],
+          ["Sora mặc bộ đồ hoàng gia lộng lẫy, nhưng trông không quen chút nào.", "Sora wore splendid royal robes, but didn't look used to them at all."],
+          ["Anh cứ kéo cổ áo, than: \"Đồ này chật quá.\"", "He kept tugging at the collar, complaining: \"These clothes are way too tight.\""],
+          ["Shiro ngồi bên cạnh, mặt không cảm xúc, tay vẫn chơi máy game.", "Shiro sat beside him, expressionless, still playing her game console."],
+          ["Steph đứng cạnh, tức muốn xỉu: \"Hai người nghiêm túc một chút được không!\"", "Steph, standing next to them, was about to faint with rage: \"Could you two be a little more serious!\""]
+        ],
+        [
+          ["Nhưng khi Sora đứng trước ngai vàng, đối diện với dân chúng, anh như biến thành một người khác.", "But when Sora stood before the throne, facing the people, he seemed to become someone else."],
+          ["Ánh mắt anh trở nên nghiêm túc, lưng thẳng lên.", "His gaze turned serious and his back straightened."],
+          ["Anh hít một hơi thật sâu, bắt đầu bài phát biểu đầu tiên của một ông vua.", "He took a deep breath and began his first speech as king."]
+        ],
+        [
+          ["\"Hôm nay, tôi muốn kể cho mọi người nghe một câu chuyện.\"", "\"Today, I want to tell you all a story.\""],
+          ["\"Một câu chuyện về một ông vua ngốc nghếch.\"", "\"A story about a foolish king.\""],
+          ["Mọi người ngạc nhiên. Ai cũng biết Sora đang nói về vua cũ.", "People were taken aback. Everyone knew Sora was talking about the old king."],
+          ["Mặt Steph tái đi.", "Steph's face went pale."]
+        ],
+        [
+          ["\"Khi tất cả mọi người đã bỏ cuộc, ông vua này không bỏ cuộc.\"", "\"When everyone else had given up, this king did not.\""],
+          ["\"Khi ai cũng nói không thể, ông nói chúng ta làm được.\"", "\"When everyone said it was impossible, he said we can do it.\""],
+          ["\"Ông đã thua rất nhiều lần. Lần nào thua cũng đau đớn.\"", "\"He lost many, many times. Every loss was painful.\""],
+          ["\"Nhưng ông chưa bao giờ ngừng chiến đấu.\"", "\"But he never stopped fighting.\""]
+        ],
+        [
+          ["\"Có người nói ông ngốc. Chính tôi cũng đã nói ông ngốc.\"", "\"Some people said he was foolish. I said so myself.\""],
+          ["\"Nhưng bây giờ, tôi muốn nói rằng ông là người dũng cảm nhất mà tôi từng biết.\"", "\"But now I want to say that he was the bravest person I have ever known.\""],
+          ["\"Vì ông luôn tin vào loài người, ngay cả khi cả thế giới không còn ai tin.\"", "\"Because he always believed in humanity, even when no one else in the world did.\""],
+          ["Nước mắt Steph chảy dài.", "Tears streamed down Steph's face."]
+        ],
+        [
+          ["Giọng Sora càng lúc càng lớn: \"Hôm nay, tôi nhận lấy gánh nặng của ông.\"", "Sora's voice grew louder and louder: \"Today, I take up his burden.\""],
+          ["\"Tôi cũng tin vào loài người. Nhưng tôi sẽ không chỉ dựa vào niềm tin.\"", "\"I believe in humanity too. But I won't rely on faith alone.\""],
+          ["\"Tôi sẽ dùng trí tuệ, chiến thuật và khả năng thật sự để lấy lại tất cả những gì loài người đã mất!\"", "\"I will use wisdom, strategy and real ability to win back everything humanity has lost!\""]
+        ],
+        [
+          ["Cả đại sảnh bắt đầu xì xào.", "The whole hall began to murmur."],
+          ["Có người nghĩ ông vua mới quá ngạo mạn. Có người nghĩ anh chỉ nói cho vui.", "Some thought the new king was far too arrogant. Others thought he was all talk."],
+          ["Nhưng cũng có những người mà mắt bắt đầu sáng lên.", "But there were also people whose eyes began to shine."],
+          ["Đã lâu lắm rồi, mới có người cho họ hy vọng.", "It had been a very long time since anyone had given them hope."]
+        ],
+        [
+          ["Sora công bố chính sách đầu tiên của mình.", "Sora announced his first policy."],
+          ["\"Lời thề thứ mười nói: mọi người hãy cùng nhau chơi cho vui!\"", "\"The tenth covenant says: let's all play together and have fun!\""],
+          ["\"Đó sẽ là kim chỉ nam của chúng ta. Không chiến tranh, không giết chóc, không bạo lực, mà là chơi game!\"", "\"That will be our guiding principle. Not war, not killing, not violence — but games!\""],
+          ["\"Chúng ta sẽ dùng trò chơi để lấy lại quê hương!\"", "\"We will use games to win back our homeland!\""]
+        ],
+        [
+          ["\"Từ hôm nay, loài người sẽ không chạy trốn nữa!\"", "\"From this day on, humanity will run no more!\""],
+          ["\"Chúng ta sẽ không chỉ phòng thủ nữa! Chúng ta sẽ chủ động thách đấu các chủng tộc khác!\"", "\"We won't just defend ourselves anymore! We will take the initiative and challenge the other races!\""],
+          ["\"Và lấy lại từng thứ một, tất cả những gì chúng ta đã mất!\"", "\"And win back, one by one, everything we have lost!\""],
+          ["Giọng Sora vang khắp đại sảnh.", "Sora's voice echoed through the great hall."],
+          ["Từ từ, mọi người bắt đầu vỗ tay. Tiếng vỗ tay càng lúc càng lớn, cuối cùng biến thành tiếng reo hò.", "Slowly, people began to clap. The applause grew louder and louder until it turned into cheering."]
+        ],
+        [
+          ["Steph đứng dưới khán đài, nhìn Sora, mắt cay cay.", "Steph stood below the stage, watching Sora, her eyes stinging."],
+          ["Cô nhớ tới ông nội. Ông cũng từng đứng ở chỗ đó, nói những lời tương tự.", "She thought of her grandfather. He too had once stood in that very spot and said similar words."],
+          ["Nhưng Sora khác ông nội. Ông nội có niềm tin, nhưng không có khả năng.", "But Sora was different from her grandfather. Her grandfather had faith, but not the ability."],
+          ["Còn Sora có cả hai.", "Sora had both."]
+        ],
+        [
+          ["Lễ đăng quang kết thúc, Sora về phòng riêng của nhà vua.", "When the coronation was over, Sora went back to the king's private chambers."],
+          ["Anh tháo vương miện, quăng sang một bên, rồi nằm vật ra giường, ngáp một cái thật dài.", "He took off the crown, tossed it aside, then flopped onto the bed with an enormous yawn."],
+          ["\"Mệt quá. Phát biểu là chuyện phiền nhất trên đời.\"", "\"So tired. Making speeches is the most annoying thing in the world.\""],
+          ["Shiro leo lên giường, dựa vào anh mình.", "Shiro climbed onto the bed and leaned against her brother."],
+          ["Steph vừa dọn lại căn phòng bị hai anh em bày bừa, vừa càu nhàu không ngớt.", "Steph tidied up the room the two of them had turned into a mess, grumbling the whole time."]
+        ],
+        [
+          ["Ngoài cửa sổ, tiếng reo hò của người dân vẫn còn vang tới tận khuya.", "Outside the window, the people's cheering went on late into the night."],
+          ["Lần đầu tiên sau nhiều năm, đèn trong những ngôi nhà ở Elkia sáng lâu hơn thường lệ.", "For the first time in years, the lights in Elkia's houses stayed on later than usual."]
+        ],
+        [
+          ["Sora bỗng ngồi dậy, vẻ mặt nghiêm túc trở lại.", "Sora suddenly sat up, his serious expression back."],
+          ["\"Steph, tôi có vài câu hỏi.\"", "\"Steph, I have a few questions.\""],
+          ["\"Thứ nhất, lương thực của loài người còn đủ dùng bao lâu?\"", "\"First, how long will humanity's food supplies last?\""],
+          ["\"Thứ hai, chúng ta còn bao nhiêu quân đội?\"", "\"Second, how much of an army do we have left?\""],
+          ["\"Thứ ba, đất của chủng tộc khác gần nhất ở đâu?\"", "\"Third, where is the nearest territory belonging to another race?\""]
+        ],
+        [
+          ["Steph trả lời từng câu một. Tình hình còn tệ hơn Sora tưởng.", "Steph answered each question in turn. The situation was even worse than Sora had imagined."],
+          ["Lương thực chỉ đủ dùng ba tháng.", "The food would last only three months."],
+          ["Quân đội gần như không có, vì Lời Thề cấm bạo lực nên quân đội chẳng để làm gì.", "There was almost no army: since the Covenants ban violence, an army was useless."],
+          ["Vùng đất gần nhất thuộc về Thú nhân, mà Thú nhân thì rất mạnh.", "The nearest land belonged to the Werebeasts, and the Werebeasts were very strong."]
+        ],
+        [
+          ["Sora im lặng một lúc, rồi nói: \"Tôi cần thêm thông tin.\"", "Sora was quiet for a moment, then said: \"I need more information.\""],
+          ["\"Về đặc điểm của từng chủng tộc, điểm mạnh và điểm yếu của họ.\"", "\"About the traits of each race — their strengths and their weaknesses.\""],
+          ["\"Và hồ sơ của tất cả những trận đấu mà loài người đã thua trước đây.\"", "\"And the records of every match humanity has ever lost.\""],
+          ["\"Tôi có thể tìm hết cho anh,\" Steph nói.", "\"I can find all of that for you,\" Steph said."],
+          ["Sora cười: \"Tốt. Vậy trông cậy vào cô đó, Steph.\"", "Sora smiled: \"Good. Then I'm counting on you, Steph.\""]
+        ],
+        [
+          ["Mặt Steph hơi đỏ lên. Cô vội quay đi: \"Đừng hiểu lầm! Tôi giúp anh chỉ vì Lời Thề thôi!\"", "Steph's face turned a little red. She quickly looked away: \"Don't get the wrong idea! I'm only helping you because of the Covenant!\""],
+          ["Sora cười: \"Rồi, rồi, tất cả là vì Lời Thề.\"", "Sora grinned: \"Sure, sure. It's all because of the Covenant.\""],
+          ["Nhưng trong lòng, Steph biết mình đã bắt đầu tin Sora.", "But deep down, Steph knew she had begun to believe in Sora."],
+          ["Có lẽ chàng thanh niên kỳ lạ này thật sự có thể thay đổi mọi thứ.", "Perhaps this strange young man really could change everything."]
+        ]
+      ],
+      vocab: [
+        ["thế là", "and so"],
+        ["lễ đăng quang", "coronation"],
+        ["tổ chức", "to hold, organize"],
+        ["lộng lẫy", "splendid"],
+        ["cổ áo", "collar"],
+        ["than", "to complain"],
+        ["tức muốn xỉu", "furious enough to faint"],
+        ["ngai vàng", "throne"],
+        ["dân chúng", "the people"],
+        ["hít một hơi", "to take a breath"],
+        ["bài phát biểu", "speech"],
+        ["ngốc nghếch", "foolish"],
+        ["chiến đấu", "to fight"],
+        ["gánh nặng", "burden"],
+        ["xì xào", "to murmur"],
+        ["ngạo mạn", "arrogant"],
+        ["công bố", "to announce"],
+        ["chính sách", "policy"],
+        ["kim chỉ nam", "guiding principle"],
+        ["giết chóc", "killing"],
+        ["quê hương", "homeland"],
+        ["chạy trốn", "to run away"],
+        ["phòng thủ", "to defend"],
+        ["chủ động", "to take the initiative"],
+        ["khán đài", "stage, stand"],
+        ["cay cay", "stinging (eyes)"],
+        ["tương tự", "similar"],
+        ["nằm vật ra", "to flop down"],
+        ["phiền", "annoying"],
+        ["bày bừa", "to make a mess"],
+        ["càu nhàu", "to grumble"],
+        ["lương thực", "food supplies"],
+        ["quân đội", "army"],
+        ["tình hình", "situation"],
+        ["vùng đất", "territory, region"],
+        ["thuộc về", "to belong to"],
+        ["thông tin", "information"],
+        ["đặc điểm", "characteristic"],
+        ["hiểu lầm", "to misunderstand"]
+      ]
+    },
+    {
+      title: "Khởi Đầu Mới",
+      subtitle: "A New Beginning — Epilogue",
+      level: "B1",
+      readTime: "25 min",
+      wordCount: "~830 words",
+      paragraphs: [
+        [
+          ["Từ khi làm vua, cuộc sống của Sora và Shiro thay đổi rất nhiều.", "After they became king, Sora and Shiro's lives changed a great deal."],
+          ["Hai anh em dọn vào lâu đài hoàng gia, một tòa lâu đài khổng lồ với hàng trăm căn phòng.", "They moved into the royal castle, an enormous castle with hundreds of rooms."],
+          ["Nhưng Sora chỉ dùng một phòng, phòng nhỏ nhất.", "But Sora used only one of them — the smallest."],
+          ["Anh chất đầy phòng bằng game, sách và đồ ăn vặt mua từ quán rượu.", "He crammed it full of games, books and snacks bought from the tavern."],
+          ["\"Anh là vua mà! Ở phòng lớn hơn đi!\" Steph nói.", "\"You're the king! Live in a bigger room!\" Steph said."],
+          ["Sora đáp: \"Phòng nhỏ làm tôi thấy an toàn.\"", "Sora replied: \"Small rooms make me feel safe.\""]
+        ],
+        [
+          ["Ngày nào cũng có người tới gặp Sora nhờ giải quyết đủ thứ chuyện: thuế, buôn bán, đất đai.", "Every day, people came to Sora asking him to sort out all kinds of problems: taxes, trade, land."],
+          ["Sora ngồi trên ngai vàng, một tay cầm giấy tờ, một tay chơi game.", "Sora sat on the throne with documents in one hand and a game in the other."],
+          ["\"Làm vua khác với tôi tưởng,\" anh nói. \"Tôi tưởng chỉ cần chơi game thôi.\"", "\"Being king is different from what I imagined,\" he said. \"I thought I'd only have to play games.\""]
+        ],
+        [
+          ["Steph trở thành trợ lý của hai anh em, hay nói đúng hơn là người giữ trẻ.", "Steph became the siblings' assistant — or, to be more accurate, their babysitter."],
+          ["Sáng nào cô cũng phải gọi Sora dậy, vì anh luôn ngủ tới trưa.", "Every morning she had to wake Sora up, because he always slept until noon."],
+          ["Rồi cô phải chuẩn bị bữa sáng cho Shiro, vì Shiro chỉ chịu ăn đồ ngọt.", "Then she had to make breakfast for Shiro, because Shiro would only eat sweet things."],
+          ["Buổi chiều cô phải lo việc nước, vì Sora đẩy gần hết công việc cho cô.", "In the afternoon she had to deal with affairs of state, because Sora pushed nearly all the work onto her."],
+          ["Steph hay than: \"Rốt cuộc tôi là trợ lý của ai vậy?!\"", "Steph often complained: \"Just whose assistant am I, anyway?!\""]
+        ],
+        [
+          ["Nhưng Steph cũng dần nhận ra Sora không hề lười biếng.", "But Steph slowly realized that Sora wasn't lazy at all."],
+          ["Những lúc trông như đang chơi game, thật ra anh đang nghiên cứu.", "When he looked as if he was playing games, he was actually doing research."],
+          ["Mỗi trò anh chơi là để luyện một chiến thuật nào đó.", "Every game he played was practice for some strategy."],
+          ["Mỗi cuốn sách anh đọc đều là tài liệu về các chủng tộc khác.", "Every book he read was material about the other races."],
+          ["Sora lúc nào cũng đang chuẩn bị cho trận chiến tiếp theo.", "Sora was always preparing for the next battle."]
+        ],
+        [
+          ["Có đêm, Steph thấy đèn trong phòng Sora vẫn sáng lúc ba giờ sáng.", "Some nights, Steph saw the light in Sora's room still on at three in the morning."],
+          ["Anh ngồi giữa đống sách, Shiro ngủ gục bên cạnh, trên bàn đầy những tờ giấy ghi chú chi chít.", "He sat among piles of books, Shiro asleep slumped beside him, the table covered in sheets of tightly written notes."],
+          ["Steph lặng lẽ đắp chăn cho hai anh em, rồi đóng cửa lại.", "Steph quietly laid a blanket over the two of them, then closed the door."],
+          ["Cô bắt đầu hiểu vì sao người ta gọi họ là thiên tài.", "She began to understand why people called them geniuses."]
+        ],
+        [
+          ["Một đêm, Sora đứng trên ngọn tháp cao nhất của lâu đài.", "One night, Sora stood on the castle's tallest tower."],
+          ["Gió đêm thổi qua mái tóc anh.", "The night wind blew through his hair."],
+          ["Bầu trời ở đây có nhiều sao hơn ở Nhật Bản rất nhiều, cả bầu trời lấp lánh ánh sao.", "The sky here held far more stars than the sky over Japan; the whole of it glittered with starlight."],
+          ["Sora ngước nhìn, nghĩ về rất nhiều chuyện.", "Sora gazed up at it, thinking about many things."]
+        ],
+        [
+          ["Shiro lặng lẽ bước tới, dựa vào người anh.", "Shiro quietly came over and leaned against her brother."],
+          ["\"Shiro, em còn nhớ cuộc sống ở Nhật không?\" Sora hỏi.", "\"Shiro, do you still remember our life in Japan?\" Sora asked."],
+          ["\"Nhớ. Chán lắm,\" Shiro nói.", "\"I remember. Very boring,\" Shiro said."],
+          ["Sora cười: \"Ừ. Ở thế giới đó, người ta gọi tụi mình là đồ vô dụng.\"", "Sora smiled: \"Yeah. In that world, people called us useless.\""],
+          ["\"Không đi học, không đi làm, không ra khỏi nhà. Ai cũng nghĩ tụi mình thất bại.\"", "\"No school, no job, never leaving the house. Everyone thought we were failures.\""]
+        ],
+        [
+          ["Anh dang rộng hai tay, đón lấy gió đêm của thế giới này.", "He spread his arms wide, welcoming the night wind of this world."],
+          ["\"Nhưng ở đây, trò chơi là tất cả.\"", "\"But here, games are everything.\""],
+          ["\"Ở đây, khả năng của tụi mình cuối cùng cũng có chỗ để dùng.\"", "\"Here, our abilities finally have a place to be used.\""],
+          ["\"Đây mới là thế giới mà tụi mình thuộc về.\"", "\"This is the world where we truly belong.\""],
+          ["Shiro gật đầu, ánh sao phản chiếu trong mắt cô.", "Shiro nodded, the starlight reflected in her eyes."]
+        ],
+        [
+          ["Shiro ngước lên nhìn anh, đôi mắt đỏ lấp lánh dưới ánh trăng.", "Shiro looked up at her brother, her red eyes sparkling in the moonlight."],
+          ["\"Bước tiếp theo là gì?\" cô hỏi.", "\"What's the next step?\" she asked."],
+          ["\"Trước tiên, mình sẽ thách đấu Thú nhân,\" Sora nói.", "\"First, we'll challenge the Werebeasts,\" Sora said."],
+          ["\"Họ ở gần mình nhất, và cũng là một trong những chủng tộc khó đối phó nhất.\"", "\"They're the closest to us, and one of the hardest races to deal with.\""],
+          ["\"Họ không có phép thuật, nhưng giác quan của họ hơn người.\"", "\"They have no magic, but their senses are superhuman.\""]
+        ],
+        [
+          ["\"Họ nghe được nhịp tim thay đổi, ngửi được mùi mồ hôi.\"", "\"They can hear a heartbeat change and smell sweat.\""],
+          ["\"Nói cách khác, họ biết mình có đang nói dối hay không.\"", "\"In other words, they know whether you're lying.\""],
+          ["\"Với những đối thủ như vậy, lừa kiểu bình thường là vô ích.\"", "\"Against opponents like that, ordinary tricks are useless.\""],
+          ["\"Đây sẽ là một trận chiến hoàn toàn khác.\"", "\"This is going to be a completely different kind of battle.\""]
+        ],
+        [
+          ["Sora nhìn ra xa, mắt đầy háo hức.", "Sora gazed into the distance, his eyes full of excitement."],
+          ["\"Thắng Thú nhân xong, mình sẽ thách đấu các chủng tộc khác.\"", "\"Once we've beaten the Werebeasts, we'll challenge the other races.\""],
+          ["\"Đánh bại từng chủng tộc một, lấy lại đất đai của mình.\"", "\"Defeat them one at a time and win back our land.\""],
+          ["\"Rồi thách đấu tộc Elf, thách đấu Flügel... cho tới khi đánh bại cả mười sáu chủng tộc.\"", "\"Then take on the Elves, take on the Flügel... until all sixteen races have been defeated.\""]
+        ],
+        [
+          ["Sora ngừng lại, nhìn ngôi sao sáng nhất trên trời.", "Sora paused and looked at the brightest star in the sky."],
+          ["Anh biết Tet, vị Thượng Đế của thế giới này, đang nhìn họ từ trên đó.", "He knew Tet, the God of this world, was watching them from up there."],
+          ["\"Và cuối cùng...\" Sora nói.", "\"And finally...\" Sora said."],
+          ["Shiro nói nốt câu của anh: \"...thách đấu chính Thượng Đế.\"", "Shiro finished his sentence: \"...challenge God himself.\""],
+          ["Hai anh em nhìn nhau mỉm cười.", "The two of them looked at each other and smiled."]
+        ],
+        [
+          ["Đúng lúc đó, một luồng sáng lóe lên trước mặt họ.", "Just then, a flash of light appeared in front of them."],
+          ["Bóng dáng Tet hiện ra trong một khoảnh khắc.", "Tet's figure appeared for a single instant."],
+          ["Cậu mỉm cười, đưa một ngón tay lên môi, như muốn nói: \"Tôi đang chờ hai người đó.\"", "He smiled and raised a finger to his lips, as if to say: \"I'm waiting for you two.\""],
+          ["Rồi cậu biến mất, chỉ để lại vài đốm sáng nhỏ bay lơ lửng trong gió đêm.", "Then he was gone, leaving only a few tiny specks of light floating on the night wind."]
+        ],
+        [
+          ["Sora cười lớn. Anh giơ nắm tay lên, hét vào bầu trời đêm.", "Sora laughed out loud. He raised his fist and shouted into the night sky."],
+          ["\"Nghe đây! Tụi tôi là Khoảng Trắng! Tụi tôi không biết chữ thua viết thế nào!\"", "\"Listen up! We are Blank! We don't even know how to spell defeat!\""],
+          ["Shiro cũng giơ nắm tay nhỏ lên: \"...Trò chơi bắt đầu.\"", "Shiro raised her little fist too: \"...Let the games begin.\""]
+        ],
+        [
+          ["Ánh trăng phủ lên hai anh em.", "Moonlight washed over the two of them."],
+          ["Gió đêm mang theo mùi hoa.", "The night wind carried the scent of flowers."],
+          ["Thế giới này rất đẹp, nhưng cũng đầy nguy hiểm.", "This world was beautiful, but also full of danger."],
+          ["Nhưng Sora và Shiro không sợ, vì họ có nhau, và vì họ có trò chơi.", "But Sora and Shiro weren't afraid, because they had each other, and because they had games."],
+          ["Cuộc phiêu lưu mới chỉ vừa mới bắt đầu.", "Their new adventure had only just begun."],
+          ["Hết tập một.", "End of Volume One."]
+        ]
+      ],
+      vocab: [
+        ["khởi đầu", "beginning"],
+        ["chất đầy", "to cram full"],
+        ["đồ ăn vặt", "snacks"],
+        ["an toàn", "safe"],
+        ["thuế", "tax"],
+        ["buôn bán", "trade"],
+        ["giấy tờ", "documents"],
+        ["trợ lý", "assistant"],
+        ["nói đúng hơn", "to be more accurate"],
+        ["người giữ trẻ", "babysitter"],
+        ["việc nước", "affairs of state"],
+        ["lười biếng", "lazy"],
+        ["nghiên cứu", "to research"],
+        ["luyện", "to practice, train"],
+        ["tài liệu", "material, documents"],
+        ["ngọn tháp", "tower"],
+        ["lấp lánh", "to glitter"],
+        ["thất bại", "failure; to fail"],
+        ["dang rộng", "to spread wide"],
+        ["thuộc về", "to belong to"],
+        ["phản chiếu", "to reflect"],
+        ["ánh trăng", "moonlight"],
+        ["trước tiên", "first of all"],
+        ["đối phó", "to deal with"],
+        ["ngửi", "to smell"],
+        ["mồ hôi", "sweat"],
+        ["nói cách khác", "in other words"],
+        ["háo hức", "eager, excited"],
+        ["nói nốt", "to finish saying"],
+        ["bóng dáng", "figure, silhouette"],
+        ["khoảnh khắc", "moment, instant"],
+        ["nắm tay", "fist"],
+        ["phủ", "to cover"],
+        ["nguy hiểm", "danger"],
+        ["phiêu lưu", "adventure"],
+        ["tập", "volume"]
+      ]
     }
   ]
 }];
