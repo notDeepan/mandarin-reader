@@ -7,16 +7,17 @@ let state = {
   mode: 'both',
   readingType: 'book',
   fontLevel: 0,
-  grammarLevel: 0
+  grammarLevel: 0,
+  pack: null
 };
 
-const BOOKS = window.BOOKS || [];
-const NOVELS = window.NOVELS || [];
-const GRAMMAR = window.GRAMMAR || [];
+let BOOKS = [];
+let NOVELS = [];
+let GRAMMAR = [];
 const LEVEL_COLORS = { 'A1':'#27ae60','A2':'#2980b9','A2+':'#8e44ad','B1':'#d4781e','B1+':'#c0392b' };
 const LEVEL_GRADIENTS = { 'A1':'linear-gradient(135deg,#1e8449,#2ecc71)','A2':'linear-gradient(135deg,#1a5276,#3498db)','A2+':'linear-gradient(135deg,#6c3483,#af7ac5)','B1':'linear-gradient(135deg,#a0600e,#e67e22)','B1+':'linear-gradient(135deg,#922b21,#e74c3c)' };
-const MODES = ['both', 'pinyin', 'english', 'reveal'];
-const MODE_LABELS = { both: 'Both', pinyin: 'Pinyin', english: 'English', reveal: 'Reveal' };
+const MODES = ['both', 'target', 'english', 'reveal'];
+const MODE_LABELS = { both: 'Both', target: '', english: 'English', reveal: 'Reveal' };
 const LEVEL_CLASSES = { 'A1': 'level-a1', 'A2': 'level-a2', 'A2+': 'level-a2p', 'B1': 'level-b1', 'B1+': 'level-b1p' };
 
 function getCurrentBook() {
@@ -81,7 +82,7 @@ function renderNovelSection() {
     return '<div class="novel-card" onclick="openNovel(' + ni + ')">' +
       '<span class="novel-icon">' + (novel.icon || '') + '</span>' +
       '<div class="novel-title">' + novel.title + '</div>' +
-      '<div class="novel-titleZh">' + (novel.titleZh || '') + '</div>' +
+      '<div class="novel-titleTarget">' + (novel.titleTarget || '') + '</div>' +
       '<p class="novel-desc">' + (novel.description || '') + '</p>' +
       '<div class="novel-meta">' +
         '<span>' + novel.chapters.length + ' chapters &middot; Vol. 1</span>' +
@@ -145,23 +146,14 @@ function renderModeToggle() {
   ).join('');
 }
 
-function glossSentence(pinyin, level) {
-  var glossLevels = ['A1', 'A2', 'A2+'];
-  if (glossLevels.indexOf(level) === -1 || !window.GLOSSARY) {
-    return '<div class="pinyin-line">' + pinyin + '</div>';
+function glossSentence(line, level) {
+  if (state.pack.glossLevels.indexOf(level) === -1 || !window.GLOSSARY) {
+    return '<div class="target-line">' + line + '</div>';
   }
-  var words = pinyin.split(/\s+/);
-  var parts = words.map(function(w) {
-    var clean = w.replace(/[.,!?;:，。！？、；：""''…—·]+$/g, '').replace(/^[""''«»]+/, '');
-    var trailing = w.slice(clean.length);
-    var lookup = GLOSSARY[clean] || GLOSSARY[clean.toLowerCase()] || '';
-    if (!lookup) {
-      var noPunct = clean.replace(/[.,!?;:，。！？、；：""''…—·]+/g, '');
-      lookup = GLOSSARY[noPunct] || GLOSSARY[noPunct.toLowerCase()] || '';
-    }
+  var parts = Core.glossTokens(line, window.GLOSSARY, state.pack.glossMode).map(function(unit) {
     return '<span class="gloss-word">' +
-      '<span class="gw-meaning">' + (lookup || ' ') + '</span>' +
-      '<span class="gw-pinyin">' + w + '</span>' +
+      '<span class="gw-meaning">' + (unit.meaning || ' ') + '</span>' +
+      '<span class="gw-target">' + unit.text + '</span>' +
       '</span>';
   });
   return '<div class="gloss-line">' + parts.join('') + '</div>';
@@ -213,7 +205,7 @@ function renderVocab() {
   const ch = getCurrentBook().chapters[state.chapIdx];
   document.getElementById('vocabBody').innerHTML = (ch.vocab || []).map(([p, e]) => `
     <div class="vocab-item">
-      <span class="vocab-pinyin">${p}</span>
+      <span class="vocab-target">${p}</span>
       <span class="vocab-english">${e}</span>
     </div>
   `).join('');
@@ -313,7 +305,7 @@ function renderExampleParts(parts, formula) {
     var color = p[2] === -1 ? 'var(--text)' : (formula[p[2]] ? formula[p[2]][1] : 'var(--text)');
     var cls = p[2] === -1 ? ' part-neutral' : '';
     return '<div class="part-group' + cls + '">' +
-      '<span class="part-pinyin" style="color:' + color + '">' + p[0] + '</span>' +
+      '<span class="part-target" style="color:' + color + '">' + p[0] + '</span>' +
       (p[1] !== '-' ? '<span class="part-english">' + p[1] + '</span>' : '') +
     '</div>';
   }).join('');
@@ -350,7 +342,7 @@ function renderGrammar() {
         '<span class="pattern-num">' + (pi + 1) + '</span>' +
         '<span class="pattern-name">' + pat.name + '</span>' +
       '</div>' +
-      '<div class="pattern-name-zh">' + pat.nameZh + '</div>' +
+      '<div class="pattern-name-target">' + pat.nameTarget + '</div>' +
       '<div class="formula-display">' + formulaHtml + '</div>' +
       '<div class="pattern-tip">' + pat.tip + '</div>' +
       '<div class="examples-label">Examples</div>' +
@@ -379,14 +371,40 @@ window.addEventListener('scroll', () => {
   }
 });
 
-/* ===== INIT ===== */
-if (localStorage.getItem('mandarin-reader-dark') === 'true') {
-  document.body.classList.add('dark');
-  document.querySelectorAll('#darkBtnNav, #darkBtnReader').forEach(el => el.innerHTML = '&#9788;');
+/* ===== BOOT ===== */
+function loadScripts(files) {
+  return Promise.all(files.map(function(src) {
+    return new Promise(function(resolve, reject) {
+      var s = document.createElement('script');
+      s.src = src;
+      s.async = false;
+      s.onload = function() { resolve(); };
+      s.onerror = function() { reject(new Error(src + ': failed to load')); };
+      document.body.appendChild(s);
+    });
+  }));
 }
-renderHome();
 
-/* ===== SERVICE WORKER ===== */
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js').catch(() => {});
+async function boot() {
+  if (localStorage.getItem('mandarin-reader-dark') === 'true') {
+    document.body.classList.add('dark');
+    document.querySelectorAll('#darkBtnNav, #darkBtnReader').forEach(el => el.innerHTML = '&#9788;');
+  }
+  document.getElementById('brandMark').textContent = STRINGS.BRAND_MARK;
+  document.getElementById('brandName').textContent = STRINGS.APP_NAME;
+  document.getElementById('footerBrand').textContent = STRINGS.APP_NAME;
+
+  state.pack = PACKS.zh;
+  MODE_LABELS.target = state.pack.targetLabel;
+  await loadScripts(state.pack.files);
+  BOOKS = window.BOOKS || [];
+  NOVELS = window.NOVELS || [];
+  GRAMMAR = window.GRAMMAR || [];
+  renderHome();
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  }
 }
+
+boot();

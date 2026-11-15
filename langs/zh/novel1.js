@@ -4,7 +4,7 @@
 window.NOVELS = [{
   id: "ngnl",
   title: "No Game No Life",
-  titleZh: "Yóuxì Rénshēng",
+  titleTarget: "Yóuxì Rénshēng",
   icon: "🎮",
   description: "Two genius gamers are transported to a fantasy world where everything is decided by games. Can they conquer all sixteen races and challenge God?",
   chapters: [
